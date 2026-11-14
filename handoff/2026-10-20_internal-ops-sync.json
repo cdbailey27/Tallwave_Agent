@@ -18,12 +18,12 @@
       "evidence": "Timesheets are due Fridays at 5pm starting next week.",
       "confidence": "high",
       "flags": [],
-      "notes": "Lena confirmed the rule. It recurs, so due is left null. The first deadline under the rule is Friday 2026-10-30."
+      "notes": "Lena confirmed the rule. 'Next week' is the week of 2026-1026, so the first deadline under the new rule would be Friday 2026-10-30. Due is left null because this is a standing rule, not a task."
     },
     {
       "id": "2026-10-20#02",
       "kind": "action",
-      "summary": "Update timesheet policy doc after Lena signs off on wording",
+      "summary": "Update timesheet policy doc after Lena signs off on the wording",
       "candidate_owner": "Sam Okafor",
       "due": null,
       "evidence": "Sam said he'd update the timesheet policy doc once Lena signs off on the wording.",
@@ -31,29 +31,29 @@
       "flags": [
         "no_date"
       ],
-      "notes": "Sam clearly owns this. The work depends on Lena Fischer approving the wording, and no date was given."
+      "notes": "Sam clearly owns this. It depends on Lena's sign-off on the wording, and no date was given."
     },
     {
       "id": "2026-10-20#03",
       "kind": "action",
-      "summary": "Add a 'Needs owner' status to the board template",
+      "summary": "Add a \"Needs owner\" status to the board template",
       "candidate_owner": "Sam Okafor",
       "due": "2026-10-23",
       "evidence": "He will make that change by October 23.",
       "confidence": "high",
       "flags": [],
-      "notes": "October 23 resolves to 2026-10-23. The goal is to stop unowned items from hiding in To do."
+      "notes": "Owner, task and date (October 23) are all stated plainly. The purpose is to stop unowned items hiding in To do."
     },
     {
       "id": "2026-10-20#04",
       "kind": "info",
-      "summary": "Note Cascadia margins are worse than the last report suggested",
+      "summary": "Report Cascadia margins worse than the last report suggested",
       "candidate_owner": null,
       "due": null,
       "evidence": "the Cascadia margin numbers are worse than the last report suggested",
       "confidence": "high",
       "flags": [],
-      "notes": "Jordan E. resolves to Jordan Ellis. This is margin talk about client-visible Cascadia, but it was raised in the Internal project, so internal_only does not apply here. Keep it off the Cascadia board."
+      "notes": "Status statement from Jordan Ellis. internal_only is not added because this note belongs to the Internal project. However, this is Cascadia margin data and must not appear on the client-visible Cascadia board."
     },
     {
       "id": "2026-10-20#05",
@@ -64,7 +64,7 @@
       "evidence": "He will send the full breakdown to Lena by Friday.",
       "confidence": "high",
       "flags": [],
-      "notes": "\"Jordan E.\" resolves to Jordan Ellis. \"By Friday\" resolves to 2026-10-23, the next Friday after the 2026-10-20 meeting. The recipient is internal (Lena Fischer), so this is not a client send."
+      "notes": "'Jordan E.' resolves to Jordan Ellis. 'By Friday' resolves to the next Friday after the 2026-10-20 meeting, which is 2026-10-23. internal_only is not added because the note is on the Internal project, but the content is Cascadia margin data and must stay off the client-visible Cascadia board."
     },
     {
       "id": "2026-10-20#06",
@@ -75,7 +75,7 @@
       "evidence": "Lena is reopening the junior designer search.",
       "confidence": "high",
       "flags": [],
-      "notes": "This is a staffing decision in the Internal project, so internal_only does not apply."
+      "notes": "Staffing decision made by Lena. internal_only is not added because the project board is internal."
     },
     {
       "id": "2026-10-20#07",
@@ -88,21 +88,21 @@
       "flags": [
         "no_date"
       ],
-      "notes": "Dana clearly owns this, but no date was given."
+      "notes": "Dana clearly owns this. No date was given."
     },
     {
       "id": "2026-10-20#08",
       "kind": "action",
-      "summary": "Schedule performance plan check-in with Marcus for week of 2026-10-26",
+      "summary": "Schedule Marcus's performance plan check-in for week of 2026-10-26",
       "candidate_owner": "Dana Whitfield",
       "due": null,
-      "evidence": "Lena asked Dana to schedule the performance plan check-in with Marcus for the week of October 26.",
+      "evidence": "Dana said she'd put it on the calendar.",
       "confidence": "medium",
       "flags": [
         "no_date",
         "sensitive_hr"
       ],
-      "notes": "Dana agreed to Lena's request, so Dana owns it. Week of October 26 is when the check-in happens, not a deadline for scheduling it, so due is null; scheduling should presumably happen before 2026-10-26. This concerns a performance plan for Marcus Obi, so handle it discreetly."
+      "notes": "Lena asked and Dana agreed, so Dana owns it. The check-in itself is for the week of 2026-10-26, but no deadline was stated for the scheduling task, so due is null. This concerns a performance plan for Marcus Obi, so it is flagged sensitive_hr."
     },
     {
       "id": "2026-10-20#09",
@@ -116,18 +116,18 @@
         "no_date",
         "tentative"
       ],
-      "notes": "The hedge is on doing the task, not on taking it, so Sam keeps ownership. No date was given."
+      "notes": "Sam clearly owns this, but he hedged on whether he will do it ('probably'). So he stays the owner and the item is marked tentative. No date was given."
     },
     {
       "id": "2026-10-20#10",
       "kind": "info",
-      "summary": "Remind team to keep timesheets honest since burn report depends on them",
+      "summary": "Remind team to keep timesheets honest for the burn report",
       "candidate_owner": null,
       "due": null,
-      "evidence": "Lena said the team should keep timesheets honest because the burn report depends on them.",
+      "evidence": "General reminder, no action.",
       "confidence": "high",
       "flags": [],
-      "notes": "The note says this is a general reminder with no action. Burn talk is in the Internal project, so internal_only does not apply."
+      "notes": "Lena gave this as a general reminder and the note says explicitly that no action is needed. internal_only is not added because the project board is internal."
     }
   ]
 }

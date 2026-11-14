@@ -1,0 +1,10 @@
+created:                  12
+updated:                  3
+no change:                6
+held for approval:        9
+  approved:               9
+  rejected:               0
+flagged to Sam:           3  (+ 7 on his review list)
+routed privately to Lena: 1
+policy overrides:         7
+client drafts saved:      6  (outbox/sent/, no real email)

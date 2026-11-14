@@ -107,3 +107,101 @@ class HandoffPacket(BaseModel):
         for n, item in enumerate(self.items, start=1):
             item.id = f"{self.meeting_date.isoformat()}#{n:02d}"
         return self
+
+
+# ---------------------------------------------------------------------------
+# Agent two's output: one planned change per action item (or group of items).
+# ---------------------------------------------------------------------------
+
+Op = Literal["create", "update", "no_change", "flag_only", "route_private"]
+Priority = Literal["P1", "P2", "P3"]
+Status = Literal["To do", "In progress", "Done"]
+
+
+class Outbound(BaseModel):
+    """A draft message to a client. Never sent for real: approved drafts go to outbox/sent/."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    to: List[str] = Field(min_length=1, description="Client recipients, e.g. 'Hollis Greer (Cascadia)'")
+    subject: str = Field(min_length=3)
+    body: str = Field(min_length=10)
+
+
+class PlannedChange(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    change_id: str = Field(default="", description="Set by the system. Leave empty.")
+    source_item_ids: List[str] = Field(min_length=1, description="Handoff item ids this change comes from")
+    op: Op
+    matches_task: Optional[str] = Field(
+        default=None, description="Existing task id (T-#### or NEW-#) for update/no_change; null for create"
+    )
+    title: Optional[str] = Field(default=None, max_length=79, description="Verb first, under 80 characters")
+    project: Optional[str] = Field(default=None, description="Board to file on: a project from projects.csv")
+    owner: Optional[str] = Field(default=None, description="Full name from team.csv")
+    due: Optional[date] = None
+    priority: Optional[Priority] = None
+    status: Optional[Status] = None
+    reason: str = Field(min_length=5, description="One sentence")
+    needs_approval_from: List[str] = Field(default_factory=list)
+    outbound: Optional[Outbound] = None
+
+    @field_validator("owner")
+    @classmethod
+    def owner_in_directory(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
+        team = (info.context or {}).get("team_names")
+        if v is not None and team is not None and v not in team:
+            raise ValueError(f"owner {v!r} is not a full name in team.csv")
+        return v
+
+    @field_validator("needs_approval_from")
+    @classmethod
+    def approvers_in_directory(cls, v: List[str], info: ValidationInfo) -> List[str]:
+        team = (info.context or {}).get("team_names")
+        if team is not None:
+            unknown = [name for name in v if name not in team]
+            if unknown:
+                raise ValueError(f"needs_approval_from has names not in team.csv: {unknown}")
+        return v
+
+    @field_validator("project")
+    @classmethod
+    def project_known(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
+        projects = (info.context or {}).get("projects")
+        if v is not None and projects is not None and v not in projects:
+            raise ValueError(f"project {v!r} is not in projects.csv ({sorted(projects)})")
+        return v
+
+    @model_validator(mode="after")
+    def op_fields_consistent(self, info: ValidationInfo) -> "PlannedChange":
+        board_ids = (info.context or {}).get("board_ids")
+        if self.op == "create":
+            if self.matches_task is not None:
+                raise ValueError(f"create {self.title!r} must not set matches_task (use update instead)")
+            if not self.title or not self.project:
+                raise ValueError("create needs at least a title and a project")
+        if self.op in ("update", "no_change"):
+            if not self.matches_task:
+                raise ValueError(f"{self.op} needs matches_task (the existing task id)")
+            if board_ids is not None and self.matches_task not in board_ids:
+                raise ValueError(f"matches_task {self.matches_task!r} is not on the board")
+        return self
+
+
+class FilerPlan(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    meeting_file: str
+    changes: List[PlannedChange]
+
+    @model_validator(mode="after")
+    def every_action_covered(self, info: ValidationInfo) -> "FilerPlan":
+        ctx = info.context or {}
+        item_ids, action_ids = ctx.get("item_ids"), ctx.get("action_ids")
+        used = {i for change in self.changes for i in change.source_item_ids}
+        if item_ids is not None and used - set(item_ids):
+            raise ValueError(f"source_item_ids not in this packet: {sorted(used - set(item_ids))}")
+        if action_ids is not None and set(action_ids) - used:
+            raise ValueError(f"action items with no planned change: {sorted(set(action_ids) - used)}")
+        return self

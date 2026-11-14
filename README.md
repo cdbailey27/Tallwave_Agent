@@ -1,21 +1,53 @@
 # Halden & Moore: notes-to-board agents
 
 A two-agent pipeline for the Tallwave case study. Agent one reads meeting notes and writes a
-structured **handoff packet**. Agent two (not built yet) will file tasks on the board from those
-packets only, never from the notes.
+structured **handoff packet**. Agent two plans board changes from those packets only, never from
+the notes. Plain-code policy checks every plan, and people approve anything that leaves the firm.
 
 ```
-mock-data-pack/notes/*.md ──► agent one (src/notes_reader.py) ──► handoff/<note>.json ──► agent two (next step)
-                                    │ fails validation twice
-                                    └──► handoff/failed/<note>.raw.txt + .error.txt
+notes/*.md ─► agent one ─► handoff/*.json ─┬─► agent two ─► planned changes ─► policy (code) ─┬─► approval gate ─► board.csv
+             (reader)      (the contract)  │  (filer)       (Pydantic)        overrides logged │   (engagement lead,   outbox/sent/
+                                           │                                                  │    Lena for cost)     (drafts only)
+                         notes/ locked ────┘                                                  ├─► outbox/sam-flags/   (injection, review list)
+                         (guard.py)                                                           └─► outbox/lena-private/ (HR, never on a board)
 ```
+
+## Run the whole pipeline
+
+```bash
+python run_pipeline.py --dry-run --reset-board          # plan only: nothing written
+python run_pipeline.py --reset-board --auto-approve     # write everything that passes
+python run_pipeline.py --reset-board                    # approve or reject each held change by hand
+python run_pipeline.py --reset-board --auto-reject      # see what gets through without sign-off
+python run_pipeline.py --break-twice meridian --reset-board --auto-approve   # agent one fails a note; the rest carry on
+python tests/compare_board.py runs/<run>                # compare a run with tests/expected_board.md
+python tests/test_guard.py                              # prove agent two can't read notes/
+```
+
+Each run writes to `runs/<run>/`:
+- `plan.json`: every change as agent two planned it and as policy left it, with approvers and evidence.
+- `policy_overrides.log`
+- `board.before.csv` and `board.after.csv`
+- `changes.log`: one JSON line per board write.
+- `rejected.json`
+- `sam_review.md`
+- `failed/`
+- `summary.txt`
+
+The live board is `board/board.csv`. It's seeded from the data pack, which is never modified, and `--reset-board` starts it over.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
-| `src/schema.py` | Pydantic handoff packet: the contract between the two agents |
+| `src/schema.py` | Pydantic contracts: handoff packet (agent one) and planned change (agent two) |
 | `src/notes_reader.py` | Agent one: one note in, one validated packet out |
+| `src/board_filer.py` | Agent two: packets + board in, validated planned changes out; no writes |
+| `src/policy.py` | firm-rules.md as plain code; overrides agent two and logs why |
+| `src/approve.py` | Approval gate: shows change, evidence and draft; approve or reject |
+| `src/board.py` | Board writer: read, create, update. No delete, no email |
+| `src/guard.py` | Fails the run loudly if agent two's process touches notes/ |
+| `run_pipeline.py` | One command: reader → filer → policy → approval → write |
 | `run_reader.py` | Runs agent one over all four notes in date order |
 | `tests/expected_items.md` | Hand-written answer key for checking agent one |
 | `handoff/` | Agent one's output (one JSON per note) |
