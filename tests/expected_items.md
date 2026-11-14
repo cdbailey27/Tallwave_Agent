@@ -8,6 +8,7 @@ owner, due date and *at least* the listed flags. Extra flags are OK if the `note
 them. **Acceptable** gives the other answers a careful reader could reasonably reach.
 
 Date anchors: 10-13 is a Tuesday, 10-15 a Thursday, 10-20 a Tuesday, 10-28 a Wednesday.
+"Before X" resolves to the day before X; "by X" is X itself.
 
 ---
 
@@ -17,7 +18,7 @@ Date anchors: 10-13 is a Tuesday, 10-15 a Thursday, 10-20 a Tuesday, 10-28 a Wed
 |---|---|---|---|---|---|---|
 | 1 | decision | Set storefront launch target to 2026-11-18 | null | 2026-11-18 or null | client_send *(acceptable)* | Superseded by the 10-28 note; agent one shouldn't know that. |
 | 2 | action | Deliver product page comps to Hollis | Priya Raman | **2026-10-23** | client_send | "End of next week" from Tue 10-13 = Fri 10-23. |
-| 3 | action | Recommend hosted vs. custom checkout | Jordan Pike | **2026-10-15** | — | "Before the Thursday call." `Jordan P.` = Jordan Pike. |
+| 3 | action | Recommend hosted vs. custom checkout | Jordan Pike | **2026-10-14** | — | "Before the Thursday call" (Thu 10-15) = done by Wed 10-14. `Jordan P.` = Jordan Pike. |
 | 4 | action | Send revised SOW to Hollis | Dana Whitfield | **2026-10-14** | client_send | "Tomorrow." The SOW covering extra page templates is a scope statement. |
 | 5 | action | Confirm third revision round to Hollis by email | Dana Whitfield | null | **cost_commitment, client_send, no_date** | Free extra scope. The confirmation email is a client send. *Acceptable:* split into a decision ("absorb 3rd round") plus an action (send the email). |
 | 6 | action | Own the old-site redirects map | **null** | null | **ambiguous_owner, inactive_owner** (or note it), **tentative**, no_date | Eli is inactive. Jordan P.'s "maybe… I'd have to check" is not an owner. Must **not** assign to Jordan Pike or Eli Torres. |
@@ -37,7 +38,7 @@ Date anchors: 10-13 is a Tuesday, 10-15 a Thursday, 10-20 a Tuesday, 10-28 a Wed
 | 2 | action | Update onboarding prototypes | Priya Raman | **2026-10-19** | — | "By Monday" after Thu 10-15. |
 | 3 | action | Write up research findings for three-step flow | Marcus Obi | null | **no_date** | "No date was set." |
 | 4 | action | Confirm Meridian compliance accepts dropping ID verification | **null** | null | **ambiguous_owner, no_date**, client_send *(acceptable)* | "Someone should check." Do not give it to Sam just because he raised it. |
-| 5 | action | Set up call with Ravi before his board meeting | Lena Fischer | **2026-11-02** (2026-11-03 acceptable) | client_send *(acceptable)* | "Before his board meeting on the 3rd." |
+| 5 | action | Set up call with Ravi before his board meeting | Lena Fischer | **2026-11-02** | client_send *(acceptable)* | "Before his board meeting on the 3rd" = done by 11-02. |
 | 6 | info | Brand assets already sent to Ravi | Priya Raman *(or null)* | null | — | Already done. Must **not** be an open action. |
 | 7 | action | Set up staging environment for device testing | **null** | null | **ambiguous_owner, no_date** | "Nobody confirmed which Jordan." Two Jordans in the directory. Must **not** pick one. |
 | 8 | info | Lena declined to discuss phase-2 pricing | null | null | — | *Acceptable:* decision kind, or omitted. Must not become a task to send pricing. |

@@ -62,7 +62,10 @@ if the work itself changed.
 - owner: candidate_owner from the packet, exactly. If it is null, or the person is inactive, \
 use Sam Okafor and start the title with "[Needs owner] ". Never pick an owner the packet does \
 not name. When updating a task, leave owner null if it should not change.
-- due: the packet's due date. If there is none, leave it null (policy sets a default).
+- due: the packet's due date. If there is none, leave it null (policy sets a default). One \
+correction: if the item's evidence or notes say the work must happen before a date or event X \
+("before his board meeting on the 3rd", "before the Thursday call") and the packet's due equals \
+X, use the day before X, and say so in reason. Never move the due date of a task that is Done.
 - priority: P1 if it blocks a client deliverable, P3 for internal housekeeping, otherwise P2.
 - status: "To do" for new work. Leave null on updates unless the status changed.
 - reason: one sentence on why this op and this match.

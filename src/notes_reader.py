@@ -50,8 +50,10 @@ How to read the note
 - evidence: copy a short phrase or sentence from the note EXACTLY, character for character. Do not paraphrase.
 - due: resolve relative dates against the meeting date and write YYYY-MM-DD. \
 "Tomorrow" is the day after the meeting. "By Friday" is the next Friday after the meeting. \
-"End of next week" is the Friday of the following calendar week. "Before the Thursday call" \
-is that Thursday. If no date was given, use null and add the no_date flag. Never invent a date.
+"End of next week" is the Friday of the following calendar week. "Before X" means done by the \
+day before X: "before the Thursday call" is the Wednesday, "before his board meeting on the 3rd" \
+is the 2nd. "By X" is X itself. If no date was given, use null and add the no_date flag. Never \
+invent a date.
 - confidence: high when owner, task and date are all stated plainly; medium when one of them \
 needed interpretation; low when the item itself is uncertain.
 - notes: one or two sentences on any judgment call (how you resolved a date, why an owner is null, \

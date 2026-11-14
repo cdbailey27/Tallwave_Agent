@@ -4,7 +4,7 @@ Written from firm-rules.md and the four notes, before running agent two. Assumes
 change is approved (`--auto-approve`). "Today" is 2026-10-29. Default due date for undated work is
 2026-11-05 (policy rule).
 
-`tests/compare_board.py` reads the two tables below. A cell like `P1/P2` or `2026-11-02/2026-11-03`
+`tests/compare_board.py` reads the two tables below. A cell like `P1/P2` or `In progress/To do`
 lists the acceptable values. `*` means any value is fine. New tasks are matched to real ones by
 project and closest title, so their ids don't need to line up.
 
@@ -28,6 +28,7 @@ project and closest title, so their ids don't need to line up.
 
 Notes:
 - **T-1042 SOW:** 10-13 says send it by 10-14 (already on the board, so no change). 10-28 says resend today, so due moves to 2026-10-28. Same task; never a second SOW task.
+- **T-1046 checkout:** the 10-13 item now resolves to 2026-10-14 ("before the Thursday call"), but the task is Done, so the date stays 2026-10-15. Finished work isn't re-dated.
 - **T-1051 redirects:** 10-13 reassigns it from Eli (inactive) to Sam as `[Needs owner] Build redirects map`. 10-28 gives it to Jordan Pike, due 2026-11-06, and `[Needs owner]` comes off.
 - **T-1048 / T-1049:** the launch moved to 12-02 but nobody gave new dates. Keep the old dates and flag to Sam. Don't invent dates.
 
@@ -40,7 +41,7 @@ Notes:
 | new | Send vendor's new timeline in writing to Hollis | Cascadia | Jordan Pike | To do | 2026-10-29 | P1/P2 |
 | new | Add Teresa Lund to weekly status report | Cascadia | Dana Whitfield | To do | 2026-11-05 | P2 |
 | new | [Needs owner] Confirm Meridian compliance accepts dropping ID verification | Meridian | Sam Okafor | To do | 2026-11-05 | P1/P2 |
-| new | Set up call with Ravi before his board meeting | Meridian | Lena Fischer | To do | 2026-11-02/2026-11-03 | P2/P1 |
+| new | Set up call with Ravi before his board meeting | Meridian | Lena Fischer | To do | 2026-11-02 | P2/P1 |
 | new | [Needs owner] Set up staging environment for device testing | Meridian | Sam Okafor | To do | 2026-11-05 | P2/P1 |
 | new | Send Cascadia margin breakdown to Lena | Internal | Jordan Ellis | To do | 2026-10-23 | P2/P1 |
 | new | Add "Needs owner" status to board template | Internal | Sam Okafor | To do | 2026-10-23 | P3 |

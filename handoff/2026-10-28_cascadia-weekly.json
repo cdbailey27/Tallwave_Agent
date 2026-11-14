@@ -14,13 +14,13 @@
     {
       "id": "2026-10-28#01",
       "kind": "info",
-      "summary": "Note that the checkout vendor has slipped its delivery",
+      "summary": "Note checkout vendor has slipped its delivery",
       "candidate_owner": null,
       "due": null,
       "evidence": "the checkout vendor has slipped its delivery",
       "confidence": "high",
       "flags": [],
-      "notes": "Status reported by Jordan Pike (Jordan P.). This is the reason for the launch date change."
+      "notes": "Status reported by Jordan Pike. This is the reason for the launch move."
     },
     {
       "id": "2026-10-28#02",
@@ -33,18 +33,18 @@
       "flags": [
         "client_send"
       ],
-      "notes": "The group agreed the new launch date with client attendees present, so it counts as a date statement to the client. The due field is null because 2026-12-02 is the new launch date, not a task deadline."
+      "notes": "The new launch date was agreed with client attendees present, so it is a date statement made to the client. The due date is left null because this is a decision, not a task."
     },
     {
       "id": "2026-10-28#03",
       "kind": "info",
-      "summary": "Record client approval of the product page comps",
+      "summary": "Record client approval of product page comps",
       "candidate_owner": null,
       "due": null,
       "evidence": "Hollis approved the product page comps.",
       "confidence": "high",
       "flags": [],
-      "notes": "Hollis Greer is a client-side attendee. This approval was already given in the meeting."
+      "notes": "Hollis Greer is a client attendee. The approval is already given and needs no task."
     },
     {
       "id": "2026-10-28#04",
@@ -55,12 +55,12 @@
       "evidence": "Priya will export final specs for development by November 4.",
       "confidence": "high",
       "flags": [],
-      "notes": "'Priya' matches only Priya Raman in the directory. November 4 resolved to 2026-11-04."
+      "notes": "'By November 4' resolves to 2026-11-04."
     },
     {
       "id": "2026-10-28#05",
       "kind": "action",
-      "summary": "Resend the revised SOW to Hollis",
+      "summary": "Resend revised SOW to Hollis",
       "candidate_owner": "Dana Whitfield",
       "due": "2026-10-28",
       "evidence": "Dana checked and said she'd resend it today.",
@@ -68,18 +68,18 @@
       "flags": [
         "client_send"
       ],
-      "notes": "Hollis said he never received the revised SOW. 'Today' resolved to the meeting date, 2026-10-28. The SOW goes to the client."
+      "notes": "'Today' is the meeting date. The SOW goes to the client."
     },
     {
       "id": "2026-10-28#06",
       "kind": "action",
-      "summary": "Build the redirects map",
+      "summary": "Complete the redirects map",
       "candidate_owner": "Jordan Pike",
       "due": "2026-11-06",
-      "evidence": "Jordan P. said he'd take the redirects map. He expects it done by November 6.",
+      "evidence": "He expects it done by November 6.",
       "confidence": "high",
       "flags": [],
-      "notes": "'Jordan P.' resolves to Jordan Pike, who clearly took the task. He gave November 6 as his expected completion date, so it is used as the due date (2026-11-06)."
+      "notes": "Jordan P. resolves to Jordan Pike, who took the task. 'By November 6' resolves to 2026-11-06."
     },
     {
       "id": "2026-10-28#07",
@@ -92,60 +92,46 @@
       "flags": [
         "client_send"
       ],
-      "notes": "'Jordan P.' resolves to Jordan Pike. 'End of day tomorrow' resolved to 2026-10-29. The timeline goes to client contact Hollis Greer."
+      "notes": "'End of day tomorrow' is the day after the 2026-10-28 meeting. This is sent to client contact Hollis Greer."
     },
     {
       "id": "2026-10-28#08",
       "kind": "action",
-      "summary": "Add Teresa Lund to the weekly status report recipients",
+      "summary": "Add Teresa Lund to the weekly status report distribution",
       "candidate_owner": "Dana Whitfield",
       "due": null,
-      "evidence": "add her manager's manager, Teresa Lund, to the weekly status report",
+      "evidence": "Mina asked to add her manager's manager, Teresa Lund, to the weekly status report.",
       "confidence": "medium",
       "flags": [
         "client_send",
         "no_date"
       ],
-      "notes": "Mina Park (client) asked for this and Dana said sure, so Dana owns it. This changes who receives client status reports. No date was given."
+      "notes": "Dana Whitfield owns this because she agreed to Mina's request ('Dana said sure'). This changes who receives client status reports. No date was given."
     },
     {
       "id": "2026-10-28#09",
       "kind": "action",
-      "summary": "Update dates in the launch readiness checklist",
+      "summary": "Update dates on launch readiness checklist and launch comms plan",
       "candidate_owner": null,
       "due": null,
-      "evidence": "the launch readiness checklist",
+      "evidence": "the launch readiness checklist and launch comms plan will need new dates once the launch moves",
       "confidence": "medium",
       "flags": [
         "ambiguous_owner",
         "no_date"
       ],
-      "notes": "Sam Okafor said this needs new dates after the launch move but did not take it on, and no one else was assigned. No date was given."
+      "notes": "Sam Okafor raised the need but did not commit to doing it, so no owner is assigned. No date was stated. The launch move to 2026-12-02 was already agreed."
     },
     {
       "id": "2026-10-28#10",
-      "kind": "action",
-      "summary": "Update dates in the launch comms plan",
-      "candidate_owner": null,
-      "due": null,
-      "evidence": "launch comms plan will need new dates once the launch moves",
-      "confidence": "medium",
-      "flags": [
-        "ambiguous_owner",
-        "no_date"
-      ],
-      "notes": "Sam Okafor raised the need but did not take it on, and no owner was assigned. No date was given."
-    },
-    {
-      "id": "2026-10-28#11",
       "kind": "noise",
-      "summary": "Skip small talk about a dog chewing a laptop charger",
+      "summary": "Skip small talk about dog chewing laptop charger",
       "candidate_owner": null,
       "due": null,
       "evidence": "Mina said her dog ate part of her laptop charger",
       "confidence": "high",
       "flags": [],
-      "notes": "Off-topic small talk."
+      "notes": "Off-topic remark, included as noise."
     }
   ]
 }
