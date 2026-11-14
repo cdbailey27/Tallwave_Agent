@@ -1,0 +1,10 @@
+ValidationError: 3 validation errors for HandoffPacket
+items.0.kind
+  Input should be 'action', 'decision', 'info' or 'noise' [type=literal_error, input_value='urgent_action', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+items.0.summary
+  String should have at most 79 characters [type=string_too_long, input_value='Adopt the three-step onb...ame up in this meeting)', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_too_long
+items.0.candidate_owner
+  Value error, candidate_owner 'Jordan' is not a full name in team.csv. Use an exact name from the directory, or null with the ambiguous_owner flag. [type=value_error, input_value='Jordan', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error

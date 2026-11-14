@@ -1,0 +1,127 @@
+{
+  "meeting_file": "2026-10-28_cascadia-weekly.md",
+  "meeting_date": "2026-10-28",
+  "project": "Cascadia",
+  "attendees": [
+    "Dana Whitfield",
+    "Priya Raman",
+    "Jordan Pike",
+    "Sam Okafor",
+    "Hollis Greer (Cascadia)",
+    "Mina Park (Cascadia)"
+  ],
+  "items": [
+    {
+      "kind": "info",
+      "summary": "Note checkout vendor has slipped its delivery",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Jordan P. reported that the checkout vendor has slipped its delivery.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Status reported by Jordan Pike. This is the reason for the launch move and is not a task."
+    },
+    {
+      "kind": "decision",
+      "summary": "Move launch from 2026-11-18 to 2026-12-02",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "the group agreed to move the launch from November 18 to December 2.",
+      "confidence": "high",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "The new launch date was agreed with client attendees present, so it counts as a date statement to the client. Due is left null because the launch date itself is in the summary."
+    },
+    {
+      "kind": "info",
+      "summary": "Record client approval of product page comps",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Hollis approved the product page comps.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Hollis Greer is a client-side attendee. This records a completed approval, not a firm task."
+    },
+    {
+      "kind": "action",
+      "summary": "Export final product page specs for development",
+      "candidate_owner": "Priya Raman",
+      "due": "2026-11-04",
+      "evidence": "Priya will export final specs for development by November 4.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "'Priya' matches only Priya Raman in the directory."
+    },
+    {
+      "kind": "action",
+      "summary": "Resend revised SOW to Hollis Greer",
+      "candidate_owner": "Dana Whitfield",
+      "due": "2026-10-28",
+      "evidence": "Dana checked and said she'd resend it today.",
+      "confidence": "high",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "'Today' resolves to the meeting date. The revised SOW goes to the client, so client_send applies."
+    },
+    {
+      "kind": "action",
+      "summary": "Build the redirects map",
+      "candidate_owner": "Jordan Pike",
+      "due": "2026-11-06",
+      "evidence": "Jordan P. said he'd take the redirects map. He expects it done by November 6.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "'Jordan P.' resolves to Jordan Pike. 'Expects it done by' is read as a stated target date, not a hedge on ownership."
+    },
+    {
+      "kind": "action",
+      "summary": "Share vendor's new timeline in writing with Hollis Greer",
+      "candidate_owner": "Jordan Pike",
+      "due": "2026-10-29",
+      "evidence": "Jordan P. will share it with him by end of day tomorrow.",
+      "confidence": "high",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "'End of day tomorrow' resolves to the day after the 2026-10-28 meeting. The written timeline goes to the client."
+    },
+    {
+      "kind": "action",
+      "summary": "Add Teresa Lund to weekly status report distribution",
+      "candidate_owner": "Dana Whitfield",
+      "due": null,
+      "evidence": "Mina asked to add her manager's manager, Teresa Lund, to the weekly status report. Dana said sure.",
+      "confidence": "medium",
+      "flags": [
+        "no_date",
+        "client_send"
+      ],
+      "notes": "Dana Whitfield agreed to the client's request, so she owns it. The change affects who receives client status reports. No date was given."
+    },
+    {
+      "kind": "action",
+      "summary": "Update dates on launch readiness checklist and comms plan",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Sam said the launch readiness checklist and launch comms plan will need new dates once the launch moves.",
+      "confidence": "medium",
+      "flags": [
+        "ambiguous_owner",
+        "no_date"
+      ],
+      "notes": "Sam Okafor raised the need in passive voice but did not take it on, so no owner is named. No date was given."
+    },
+    {
+      "kind": "noise",
+      "summary": "Skip small talk about a dog chewing a laptop charger",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Mina said her dog ate part of her laptop charger",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Off-topic small talk."
+    }
+  ]
+}

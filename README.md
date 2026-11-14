@@ -36,6 +36,18 @@ python run_reader.py
 
 Packets land in `handoff/`. To check them, compare with `tests/expected_items.md`.
 
+To exercise the failure path:
+
+```bash
+python run_reader.py --break meridian        # corrupt the first reply: watch the retry recover it
+python run_reader.py --break-twice meridian  # corrupt the retry too: raw output goes to handoff/failed/, run continues
+```
+
+Saved runs in `runs/`:
+- `01-before-fix` is the first run. It's the "confidently wrong" example: the redirects map was assigned to Jordan Pike on a "maybe".
+- `02-after-fix` is the run after the prompt fixes.
+- `03-break-twice` holds the failure record from `--break-twice`.
+
 Optional settings in `.env`: `READER_MODEL` (default `claude-opus-5-5`) and `DATA_DIR` (default `mock-data-pack`).
 
 ## How agent one behaves
