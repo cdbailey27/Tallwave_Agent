@@ -11,6 +11,7 @@ Anything routed to outbox/lena-private/ is counted by file name only. Those file
 opened, and changes routed there are left out of every table.
 """
 
+import base64
 import csv
 import html
 import json
@@ -158,6 +159,7 @@ def header(data: dict) -> str:
     mode = "Dry run, nothing written" if data["dry_run"] else "Live run"
     return f"""
 <header>
+  {logo_tag()}
   <p class="eyebrow">Halden &amp; Moore · board filing run</p>
   <h1>{esc(data["run"])}</h1>
   <p class="sub">{mode} · {filed} packet{"s" if filed != 1 else ""} filed · {failed} failed</p>
@@ -299,74 +301,83 @@ def needs_person(data: dict) -> str:
 
 
 CSS = """
-:root{--bg:#f6f5f1;--panel:#fff;--ink:#1d1d1b;--muted:#6b6a64;--line:#e3e1da;--accent:#2d5b8a;
---ok:#2f7d4f;--ok-bg:#e6f2ea;--bad:#b23a32;--bad-bg:#f8e7e5;--warn-bg:#fbf0dc;--warn:#8a5a12;
---client:#7a3e9d;--client-bg:#f1e8f6;--int:#3d5f6e;--int-bg:#e5eef1;--code:#efede7}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#151514;--panel:#1e1e1c;
---ink:#ecebe6;--muted:#9c9a92;--line:#33322f;--accent:#8fb6de;--ok:#7fcf9c;--ok-bg:#1f3428;--bad:#f0948c;
---bad-bg:#3a2220;--warn-bg:#3a2f1a;--warn:#e6c27a;--client:#d3a6ec;--client-bg:#33253c;--int:#9cc3d3;--int-bg:#1f2d33;--code:#2a2a27}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#151514;--panel:#1e1e1c;--ink:#ecebe6;--muted:#9c9a92;--line:#33322f;
---accent:#8fb6de;--ok:#7fcf9c;--ok-bg:#1f3428;--bad:#f0948c;--bad-bg:#3a2220;--warn-bg:#3a2f1a;--warn:#e6c27a;
---client:#d3a6ec;--client-bg:#33253c;--int:#9cc3d3;--int-bg:#1f2d33;--code:#2a2a27}
+:root{color-scheme:dark;--bg:#000;--panel:#0d0d0d;--panel-2:#161616;--ink:#fff;--muted:#9a9a9a;--line:#262626;
+--accent:#FFC200;--accent-ink:#000;--ok:#5fd38d;--ok-bg:#0f2a1a;--bad:#ff5a4f;--bad-bg:#2a0f0d;--code:#1c1c1c}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-padding:40px 20px 80px}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.55 "Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;padding:40px 20px 80px;-webkit-font-smoothing:antialiased}
 main{max-width:1080px;margin:0 auto}
-header{margin-bottom:28px}
-.eyebrow{margin:0;color:var(--muted);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
-h1{margin:4px 0 2px;font-size:32px;letter-spacing:-.01em}
-.sub{margin:0 0 14px;color:var(--muted)}
+header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.logo{display:block;height:40px;width:auto;max-width:100%;margin-bottom:28px}
+.eyebrow{margin:0;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+h1{margin:6px 0 4px;font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.sub{margin:0 0 16px;color:var(--muted)}
 .packets{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
-.packets li{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 12px 4px 10px;font-size:13px}
+.packets li{border:1px solid var(--line);border-radius:2px;padding:4px 12px 4px 10px;font-size:13px}
 .packets em{font-style:normal;color:var(--muted)}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--ok)}
+.dot{display:inline-block;width:8px;height:8px;margin-right:7px;background:var(--ok)}
 .packets .bad .dot{background:var(--bad)} .packets .bad em{color:var(--bad)}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:36px}
-.tile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.tile .label{margin:0;font-size:13px;color:var(--muted)}
-.tile .value{margin:2px 0;font-size:34px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.15}
-.tile .value small{font-size:16px;font-weight:500;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:44px}
+.tile{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);padding:14px 16px 16px}
+.tile .label{margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tile .value{margin:6px 0 2px;font-size:38px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile .value small{font-size:16px;font-weight:400;color:var(--muted)}
 .tile .note{margin:0;font-size:12px;color:var(--muted)}
-.tile.warn{border-color:var(--bad);background:var(--bad-bg)}
-section{margin-bottom:40px}
-h2{font-size:20px;margin:0 0 4px}
-.lede{margin:0 0 14px;color:var(--muted);font-size:14px}
-.scroll{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.tile.warn{border-top-color:var(--bad);background:var(--bad-bg)}
+section{margin-bottom:48px}
+h2{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px;
+padding-left:12px;border-left:3px solid var(--accent)}
+.lede{margin:0 0 16px;color:var(--muted);font-size:14px}
+.scroll{overflow-x:auto;background:var(--panel);border:1px solid var(--line)}
 table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
-th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;
-padding:10px 14px;border-bottom:1px solid var(--line)}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;
+padding:12px 14px;border-bottom:1px solid var(--line);background:var(--panel-2)}
 td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:0}
 tr.row-rejected td{background:var(--bad-bg)}
-code{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
-.title{margin-top:4px;font-weight:550}
-.op{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+tr.row-rejected td:first-child{box-shadow:inset 3px 0 0 var(--bad)}
+code{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);color:var(--ink);padding:1px 5px;border-radius:2px}
+.title{margin-top:4px;font-weight:600}
+.op{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
 .op.new{color:var(--ok)} .op.upd{color:var(--accent)}
 .reasons{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:13px}
 .people{list-style:none;margin:0;padding:0}
-.people li{margin-bottom:4px;white-space:nowrap}
-.pill{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px;min-width:66px;text-align:center}
+.people li{margin-bottom:5px;white-space:nowrap}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+padding:2px 8px;border-radius:2px;min-width:74px;text-align:center}
 .pill.approved{background:var(--ok-bg);color:var(--ok)}
-.pill.rejected{background:var(--bad);color:var(--panel)}
+.pill.rejected{background:var(--bad);color:#000}
 .pill.not-asked,.pill.dry-run,.pill.no-record{background:var(--code);color:var(--muted)}
-.badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:6px;white-space:nowrap}
-.badge.client{background:var(--client-bg);color:var(--client)}
-.badge.internal{background:var(--int-bg);color:var(--int)}
+.badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:2px;white-space:nowrap}
+.badge.client{background:var(--accent);color:var(--accent-ink);font-weight:700}
+.badge.internal{border:1px solid #3a3a3a;color:var(--muted)}
 .was{color:var(--muted);text-decoration:line-through}
-.arrow{margin:0 6px;color:var(--muted)}
-.now{font-weight:600}
+.arrow{margin:0 6px;color:var(--accent)}
+.now{font-weight:700}
 .minor{font-size:13px;margin-top:4px;color:var(--muted)}
 .muted{color:var(--muted)}
-.group{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:12px}
-.group h3{margin:0 0 6px;font-size:15px}
+.group{background:var(--panel);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px}
+.group h3{margin:0 0 8px;font-size:15px;font-weight:700}
 .group ul{margin:0;padding-left:18px}
 .group li{margin-bottom:6px}
-.count{display:inline-block;font-size:12px;background:var(--warn-bg);color:var(--warn);border-radius:999px;padding:0 8px;margin-left:4px}
+.group li::marker{color:var(--accent)}
+.count{display:inline-block;font-size:12px;font-weight:700;background:var(--accent);color:var(--accent-ink);
+border-radius:2px;padding:0 7px;margin-left:6px}
 .group.private{border-style:dashed}
 .group.private p{margin:0}
-footer{color:var(--muted);font-size:12px}
-@media (max-width:520px){body{padding:24px 16px 60px}h1{font-size:26px}.tile .value{font-size:28px}}
+footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:520px){body{padding:24px 16px 60px}h1{font-size:30px}.tile .value{font-size:30px}.logo{height:30px}}
 """
+
+LOGO = ROOT / "Tallwave-web-logo-white@3x.png"
+
+
+def logo_tag() -> str:
+    """The logo, embedded so the report stays one self-contained file."""
+    if not LOGO.exists():
+        return ""
+    data = base64.b64encode(LOGO.read_bytes()).decode()
+    return f'<img class="logo" src="data:image/png;base64,{data}" alt="Tallwave">'
 
 
 def build(run_dir: Path) -> Path:
