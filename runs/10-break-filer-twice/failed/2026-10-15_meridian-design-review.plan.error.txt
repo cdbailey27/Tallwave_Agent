@@ -1,0 +1,7 @@
+ValidationError: 2 validation errors for FilerPlan
+changes.0.op
+  Input should be 'create', 'update', 'no_change', 'flag_only' or 'route_private' [type=literal_error, input_value='delete', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/literal_error
+changes.0.owner
+  Value error, owner 'Jordan' is not a full name in team.csv [type=value_error, input_value='Jordan', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error

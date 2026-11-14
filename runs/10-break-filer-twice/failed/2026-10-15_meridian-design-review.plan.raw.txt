@@ -1,0 +1,108 @@
+{
+  "meeting_file": "2026-10-15_meridian-design-review.md",
+  "changes": [
+    {
+      "change_id": "",
+      "source_item_ids": [
+        "2026-10-15#03",
+        "2026-10-15#01"
+      ],
+      "op": "delete",
+      "matches_task": "T-1056",
+      "title": null,
+      "project": "Meridian",
+      "owner": "Jordan",
+      "due": null,
+      "priority": null,
+      "status": null,
+      "reason": "T-1056 is the same onboarding prototype update and already has Priya Raman as owner, a 2026-10-19 due date and an In progress status, so the board already reflects this item.",
+      "needs_approval_from": [],
+      "outbound": null
+    },
+    {
+      "change_id": "",
+      "source_item_ids": [
+        "2026-10-15#04"
+      ],
+      "op": "no_change",
+      "matches_task": "T-1057",
+      "title": null,
+      "project": "Meridian",
+      "owner": null,
+      "due": null,
+      "priority": null,
+      "status": null,
+      "reason": "T-1057 is the same research findings write-up, already owned by Marcus Obi with a To do status, and the packet gives no new date, so nothing needs to change.",
+      "needs_approval_from": [],
+      "outbound": null
+    },
+    {
+      "change_id": "",
+      "source_item_ids": [
+        "2026-10-15#05",
+        "2026-10-15#02"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "[Needs owner] Confirm Meridian compliance OK to drop ID verification",
+      "project": "Meridian",
+      "owner": "Sam Okafor",
+      "due": null,
+      "priority": "P1",
+      "status": "To do",
+      "reason": "No board task covers the compliance check, nobody took it ('Someone should') and it gates locking the onboarding flow, so it is a new P1 task for Sam Okafor as placeholder owner, and the question to the client needs approval from engagement lead Lena Fischer.",
+      "needs_approval_from": [
+        "Lena Fischer"
+      ],
+      "outbound": {
+        "to": [
+          "Ravi Shah (Meridian Credit Union)"
+        ],
+        "subject": "Compliance check: identity verification step in first release",
+        "body": "Hi Ravi,\n\nIn our design review on 15 October we discussed dropping the identity verification step from the first release of the onboarding flow. Before we lock the flow, could you check with your compliance team that this is acceptable and let us know?\n\nThanks,\nSam Okafor\nHalden & Moore"
+      }
+    },
+    {
+      "change_id": "",
+      "source_item_ids": [
+        "2026-10-15#06"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "Set up call with Ravi Shah before his 3 November board meeting",
+      "project": "Meridian",
+      "owner": "Lena Fischer",
+      "due": "2026-11-02",
+      "priority": "P2",
+      "status": "To do",
+      "reason": "No board task covers Ravi's requested call and Lena agreed to set it up; the packet's due of 2026-11-02 is already the day before the 2026-11-03 board meeting, so no correction is needed, and the invite to the client needs engagement lead approval.",
+      "needs_approval_from": [
+        "Lena Fischer"
+      ],
+      "outbound": {
+        "to": [
+          "Ravi Shah (Meridian Credit Union)"
+        ],
+        "subject": "Quick call before your board meeting",
+        "body": "Hi Ravi,\n\nAs discussed, I'd be glad to have a quick call with you before your board meeting on 3 November. Could you send me a few times that work for you on or before 2 November?\n\nBest,\nLena Fischer\nHalden & Moore"
+      }
+    },
+    {
+      "change_id": "",
+      "source_item_ids": [
+        "2026-10-15#08"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "[Needs owner] Set up staging environment for real-device prototype testing",
+      "project": "Meridian",
+      "owner": "Sam Okafor",
+      "due": null,
+      "priority": "P2",
+      "status": "To do",
+      "reason": "No board task covers the staging environment, and 'Jordan' could mean Jordan Pike or Jordan Ellis with nobody confirming which, so Sam Okafor holds it as placeholder owner until someone confirms.",
+      "needs_approval_from": [],
+      "outbound": null
+    }
+  ]
+}

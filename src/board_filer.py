@@ -155,6 +155,14 @@ def validate(raw: str, packet: HandoffPacket, board: Dict[str, Dict[str, str]], 
     )
 
 
+def corrupt(raw: str) -> str:
+    """Test hook: damage a good plan so it fails validation (unknown op, guessed owner)."""
+    data = json.loads(strip_fences(raw))
+    data["changes"][0]["op"] = "delete"
+    data["changes"][0]["owner"] = "Jordan"
+    return json.dumps(data, indent=2)
+
+
 def plan_packet(
     client: anthropic.Anthropic,
     packet: HandoffPacket,
@@ -162,12 +170,20 @@ def plan_packet(
     team: set,
     projects: set,
     run_dir: Path,
+    corrupt_attempts: int = 0,
 ) -> Optional[FilerPlan]:
-    """Plan changes for one packet. Validate, retry once, then save to runs/<run>/failed/. Never raises."""
+    """Plan changes for one packet. Validate, retry once, then save to runs/<run>/failed/. Never raises.
+
+    The whole plan is validated before any of it is used, so a packet is all-or-nothing.
+    corrupt_attempts is a test hook: 1 corrupts the first reply, 2 the retry as well.
+    """
     user_message = build_user_message(packet, board)
     raw = ""
     try:
         raw = call_claude(client, MODEL, SYSTEM_PROMPT, user_message)
+        if corrupt_attempts >= 1:
+            raw = corrupt(raw)
+            log.warning("%s: test mode: corrupted agent two's first reply", packet.meeting_file)
         try:
             return validate(raw, packet, board, team, projects)
         except ValidationError as first_error:
@@ -179,7 +195,12 @@ def plan_packet(
                 "Your previous attempt failed validation. Fix every error listed and return the full corrected JSON."
             )
             raw = call_claude(client, MODEL, SYSTEM_PROMPT, retry_message)
-            return validate(raw, packet, board, team, projects)
+            if corrupt_attempts >= 2:
+                raw = corrupt(raw)
+                log.warning("%s: test mode: corrupted agent two's retry reply", packet.meeting_file)
+            plan = validate(raw, packet, board, team, projects)
+            log.warning("%s: plan passed validation on retry", packet.meeting_file)
+            return plan
     except (ValidationError, ValueError, RuntimeError, anthropic.APIError) as error:
         failed = run_dir / "failed"
         failed.mkdir(parents=True, exist_ok=True)

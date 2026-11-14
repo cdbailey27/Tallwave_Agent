@@ -6,6 +6,8 @@
     python run_pipeline.py                          ask each approver in the terminal
     python run_pipeline.py --break meridian         corrupt agent one's first reply for a note
     python run_pipeline.py --break-twice meridian   ...and its retry (that note drops out)
+    python run_pipeline.py --break-filer meridian         corrupt agent two's first plan for one packet
+    python run_pipeline.py --break-filer-twice meridian   ...and its retry (that packet is not filed)
 
 Other options: --skip-reader (reuse handoff/), --reset-board (start from the data pack's board),
 --run-name NAME (folder under runs/).
@@ -72,14 +74,18 @@ def apply_to_working(board: Dict[str, Dict[str, str]], outcome: Outcome, new_ids
                     board[c.matches_task][name] = value.isoformat() if hasattr(value, "isoformat") else value
 
 
-def plan(client: anthropic.Anthropic, run_dir: Path, ctx: Context, board_path: Optional[Path]) -> List[Outcome]:
+def plan(
+    client: anthropic.Anthropic, run_dir: Path, ctx: Context, board_path: Optional[Path], args: argparse.Namespace
+) -> List[Outcome]:
     print("\n=== Step 2: agent two plans board changes (notes/ is locked) ===")
     working = {row["id"]: dict(row) for row in board_writer.read_board(board_path)}
     team, projects = set(ctx.team_status), set(ctx.projects)
     outcomes: List[Outcome] = []
     new_ids = [0]
+    target = args.break_filer or args.break_filer_twice
     for packet in load_packets():
-        filer_plan = plan_packet(client, packet, working, team, projects, run_dir)
+        corrupt = (2 if args.break_filer_twice else 1) if target and target in packet.meeting_file else 0
+        filer_plan = plan_packet(client, packet, working, team, projects, run_dir, corrupt_attempts=corrupt)
         items = {item.id: item for item in packet.items}
         changes = list(filer_plan.changes) if filer_plan else []
         covered = {i for change in changes for i in change.source_item_ids}
@@ -88,7 +94,20 @@ def plan(client: anthropic.Anthropic, run_dir: Path, ctx: Context, board_path: O
             if item.id not in covered and {"injection", "sensitive_hr"} & set(item.flags):
                 op = "flag_only" if "injection" in item.flags else "route_private"
                 changes.append(PlannedChange(source_item_ids=[item.id], op=op, reason=f"{item.summary}. {item.notes}"))
-        status = "planned" if filer_plan else "FAILED (see failed/)"
+        if filer_plan is None:
+            # All-or-nothing: none of this packet's changes are planned. Sam files them by hand.
+            actions = [i for i in packet.items if i.kind == "action"]
+            failure = Outcome(
+                change=PlannedChange(change_id=f"C{len(outcomes) + 1:02d}", op="flag_only",
+                                     source_item_ids=[i.id for i in actions] or [packet.items[0].id],
+                                     reason=f"agent two could not plan {packet.meeting_file}"),
+                planned=PlannedChange(source_item_ids=["-"], op="flag_only", reason="planning failed"),
+                items=actions, packet_project=packet.project,
+                sam_flag=(f"Agent two failed to plan {packet.meeting_file} twice, so none of its {len(actions)} "
+                          f"action items were filed. Please file them by hand (raw output in runs/{run_dir.name}/failed/)."),
+            )
+            outcomes.append(failure)
+        status = "planned" if filer_plan else "FAILED twice: nothing from this packet planned (see failed/)"
         logged = sum(1 for i in packet.items if i.kind != "action")
         print(f"  {packet.meeting_file}: {status}, {len(changes)} changes; {logged} decision/info/noise items logged only")
         for change in changes:
@@ -267,6 +286,9 @@ def main() -> None:
     breaks = parser.add_mutually_exclusive_group()
     breaks.add_argument("--break", dest="break_once", metavar="NOTE", help="corrupt agent one's first reply for NOTE")
     breaks.add_argument("--break-twice", metavar="NOTE", help="corrupt agent one's first reply and retry for NOTE")
+    filer_breaks = parser.add_mutually_exclusive_group()
+    filer_breaks.add_argument("--break-filer", metavar="NOTE", help="corrupt agent two's first plan for NOTE's packet")
+    filer_breaks.add_argument("--break-filer-twice", metavar="NOTE", help="corrupt agent two's plan and retry for NOTE")
     gate = parser.add_mutually_exclusive_group()
     gate.add_argument("--auto-approve", action="store_true", help="approve every held change")
     gate.add_argument("--auto-reject", action="store_true", help="reject every held change")
@@ -292,7 +314,7 @@ def main() -> None:
         ctx = Context.load()
         # A dry run with --reset-board plans against the data pack's board without touching the live one.
         board_path = board_writer.SEED_PATH if (args.dry_run and args.reset_board) else None
-        outcomes = plan(client, run_dir, ctx, board_path)
+        outcomes = plan(client, run_dir, ctx, board_path, args)
         save_plan(outcomes, run_dir)
         print_plan(outcomes, ctx)
 

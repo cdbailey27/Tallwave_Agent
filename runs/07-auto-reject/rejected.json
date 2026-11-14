@@ -1,0 +1,286 @@
+[
+  {
+    "change_id": "C04",
+    "rejected_by": "Dana Whitfield",
+    "change": {
+      "change_id": "C04",
+      "source_item_ids": [
+        "2026-10-13#07",
+        "2026-10-13#06"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "[Needs owner] Email Hollis confirming the third comp revision round",
+      "project": "Cascadia",
+      "owner": "Sam Okafor",
+      "due": "2026-11-05",
+      "priority": "P2",
+      "status": "To do",
+      "reason": "No existing task covers this confirmation email, and no firm member agreed to send it, so it goes to Sam Okafor with a [Needs owner] title; it puts a cost commitment in writing, so it needs Lena Fischer's approval as well as Dana Whitfield's.",
+      "needs_approval_from": [
+        "Dana Whitfield",
+        "Lena Fischer"
+      ],
+      "outbound": {
+        "to": [
+          "Hollis Greer (Cascadia)"
+        ],
+        "subject": "Confirming a third round of product page comp revisions",
+        "body": "Hi Hollis,\n\nAs discussed in Tuesday's weekly, this is to confirm that we will include a third round of revisions on the product page comps at no additional cost to Cascadia.\n\nLet us know if you have any questions.\n\nBest,\nSam Okafor\nHalden & Moore"
+      }
+    },
+    "evidence": {
+      "2026-10-13#07": "Hollis said he'd appreciate a quick email confirming it.",
+      "2026-10-13#06": "Dana said, \"Yeah, we'll absorb that, no problem.\""
+    }
+  },
+  {
+    "change_id": "C05",
+    "rejected_by": "Dana Whitfield",
+    "change": {
+      "change_id": "C05",
+      "source_item_ids": [
+        "2026-10-13#09",
+        "2026-10-13#08"
+      ],
+      "op": "update",
+      "matches_task": "T-1051",
+      "title": "[Needs owner] Build redirects map",
+      "project": "Cascadia",
+      "owner": "Sam Okafor",
+      "due": null,
+      "priority": null,
+      "status": null,
+      "reason": "T-1051 is the same redirects map work, but its owner Eli Torres is inactive and Jordan Pike only hedged, so it is reassigned to Sam Okafor with a [Needs owner] title; no new date was given, so the due date stays as it is.",
+      "needs_approval_from": [
+        "Dana Whitfield"
+      ],
+      "outbound": null
+    },
+    "evidence": {
+      "2026-10-13#09": "Jordan P. said maybe him if he has room, but he'd have to check his week.",
+      "2026-10-13#08": "Sam said Eli was going to own the redirects map, but Eli is gone, so it needs a new home."
+    }
+  },
+  {
+    "change_id": "C09",
+    "rejected_by": "Lena Fischer",
+    "change": {
+      "change_id": "C09",
+      "source_item_ids": [
+        "2026-10-15#05",
+        "2026-10-15#02"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "[Needs owner] Confirm Meridian compliance OK with dropping ID verification",
+      "project": "Meridian",
+      "owner": "Sam Okafor",
+      "due": "2026-11-05",
+      "priority": "P1",
+      "status": "To do",
+      "reason": "No task exists for this check and nobody took it ('Someone should'), so it goes to Sam Okafor as [Needs owner] with no due date because 'before the flow is locked' has no calendar date, and it is P1 because the onboarding flow cannot be locked without it.",
+      "needs_approval_from": [
+        "Lena Fischer"
+      ],
+      "outbound": {
+        "to": [
+          "Ravi Shah (Meridian Credit Union)"
+        ],
+        "subject": "Compliance check: identity verification step in first release",
+        "body": "Hi Ravi,\n\nIn our design review on 15 October, we agreed to drop the identity verification step from the first release of the onboarding flow. Before we lock the flow, could you check with your compliance team that this is acceptable and let us know?\n\nThanks,\nSam Okafor\nHalden & Moore"
+      }
+    },
+    "evidence": {
+      "2026-10-15#05": "Someone should check before the flow is locked.",
+      "2026-10-15#02": "to drop the identity verification step from the first release"
+    }
+  },
+  {
+    "change_id": "C10",
+    "rejected_by": "Lena Fischer",
+    "change": {
+      "change_id": "C10",
+      "source_item_ids": [
+        "2026-10-15#06"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "Set up a call with Ravi Shah before his board meeting",
+      "project": "Meridian",
+      "owner": "Lena Fischer",
+      "due": "2026-11-02",
+      "priority": "P2",
+      "status": "To do",
+      "reason": "No task exists for this call, and Lena Fischer agreed to set it up; the packet's due of 2026-11-02 is already the day before the 2026-11-03 board meeting, so it needs no further correction.",
+      "needs_approval_from": [
+        "Lena Fischer"
+      ],
+      "outbound": {
+        "to": [
+          "Ravi Shah (Meridian Credit Union)"
+        ],
+        "subject": "Quick call before your board meeting",
+        "body": "Hi Ravi,\n\nAs you asked, I'd like to set up a quick call before your board meeting on 3 November. Could you send me a few times that work for you on or before 2 November?\n\nBest,\nLena Fischer\nHalden & Moore"
+      }
+    },
+    "evidence": {
+      "2026-10-15#06": "Ravi asked for a quick call with Lena before his board meeting on the 3rd. Lena said she'd set one up."
+    }
+  },
+  {
+    "change_id": "C19",
+    "rejected_by": "Dana Whitfield",
+    "change": {
+      "change_id": "C19",
+      "source_item_ids": [
+        "2026-10-28#04",
+        "2026-10-28#03"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "Export final product page specs for development",
+      "project": "Cascadia",
+      "owner": "Priya Raman",
+      "due": "2026-11-04",
+      "priority": "P1",
+      "status": "To do",
+      "reason": "No board task covers the spec export (T-1044 covers the comps, which are Done and now client-approved), so this is new work, and it is P1 because product page development depends on it.",
+      "needs_approval_from": [
+        "Dana Whitfield"
+      ],
+      "outbound": null
+    },
+    "evidence": {
+      "2026-10-28#04": "Priya will export final specs for development by November 4.",
+      "2026-10-28#03": "Hollis approved the product page comps."
+    }
+  },
+  {
+    "change_id": "C20",
+    "rejected_by": "Dana Whitfield",
+    "change": {
+      "change_id": "C20",
+      "source_item_ids": [
+        "2026-10-28#05"
+      ],
+      "op": "update",
+      "matches_task": "T-1042",
+      "title": null,
+      "project": null,
+      "owner": null,
+      "due": "2026-10-28",
+      "priority": null,
+      "status": null,
+      "reason": "Resending the revised SOW to Hollis is the same work as T-1042, which Dana already owns and has in progress, so only the due date changes to the resend date she committed to.",
+      "needs_approval_from": [
+        "Dana Whitfield",
+        "Lena Fischer"
+      ],
+      "outbound": {
+        "to": [
+          "Hollis Greer (Cascadia)"
+        ],
+        "subject": "Revised SOW (resent)",
+        "body": "Hi Hollis,\n\nAs discussed at our weekly meeting, I'm resending the revised SOW, which is attached. Please let me know if it doesn't come through or if you have any questions.\n\nBest,\nDana Whitfield"
+      }
+    },
+    "evidence": {
+      "2026-10-28#05": "Dana checked and said she'd resend it today."
+    }
+  },
+  {
+    "change_id": "C21",
+    "rejected_by": "Dana Whitfield",
+    "change": {
+      "change_id": "C21",
+      "source_item_ids": [
+        "2026-10-28#06"
+      ],
+      "op": "update",
+      "matches_task": "T-1051",
+      "title": "Build redirects map",
+      "project": null,
+      "owner": "Jordan Pike",
+      "due": "2026-11-06",
+      "priority": null,
+      "status": null,
+      "reason": "T-1051 is the same redirects map work, and Jordan Pike took it with a 2026-11-06 date, so the owner and due change and the [Needs owner] prefix is dropped.",
+      "needs_approval_from": [
+        "Dana Whitfield"
+      ],
+      "outbound": null
+    },
+    "evidence": {
+      "2026-10-28#06": "He expects it done by November 6."
+    }
+  },
+  {
+    "change_id": "C22",
+    "rejected_by": "Dana Whitfield",
+    "change": {
+      "change_id": "C22",
+      "source_item_ids": [
+        "2026-10-28#07",
+        "2026-10-28#01",
+        "2026-10-28#02"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "Share checkout vendor's new timeline in writing with Hollis",
+      "project": "Cascadia",
+      "owner": "Jordan Pike",
+      "due": "2026-10-29",
+      "priority": "P2",
+      "status": "To do",
+      "reason": "No board task covers sending the vendor's revised timeline to the client, so this is new client-facing work that needs engagement lead approval.",
+      "needs_approval_from": [
+        "Dana Whitfield"
+      ],
+      "outbound": {
+        "to": [
+          "Hollis Greer (Cascadia)"
+        ],
+        "subject": "Checkout vendor's updated timeline",
+        "body": "Hi Hollis,\n\nAs promised at our weekly meeting, attached is the checkout vendor's updated delivery timeline in writing. Their slip is the reason we agreed to move the launch from November 18 to December 2.\n\nLet me know if you have any questions.\n\nBest,\nJordan Pike"
+      }
+    },
+    "evidence": {
+      "2026-10-28#07": "Jordan P. will share it with him by end of day tomorrow.",
+      "2026-10-28#01": "the checkout vendor has slipped its delivery",
+      "2026-10-28#02": "the group agreed to move the launch from November 18 to December 2"
+    }
+  },
+  {
+    "change_id": "C23",
+    "rejected_by": "Dana Whitfield",
+    "change": {
+      "change_id": "C23",
+      "source_item_ids": [
+        "2026-10-28#08"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "Add Teresa Lund to the weekly status report distribution",
+      "project": "Cascadia",
+      "owner": "Dana Whitfield",
+      "due": "2026-11-05",
+      "priority": "P2",
+      "status": "To do",
+      "reason": "No board task covers this change to who receives the client status reports, which counts as client communication, so it is new work needing engagement lead approval; no date was given, so policy sets the default.",
+      "needs_approval_from": [
+        "Dana Whitfield"
+      ],
+      "outbound": {
+        "to": [
+          "Mina Park (Cascadia)"
+        ],
+        "subject": "Adding Teresa Lund to the weekly status report",
+        "body": "Hi Mina,\n\nFollowing your request at our weekly meeting, we're adding Teresa Lund to the distribution for the weekly status report. Could you send me the email address she'd like it sent to?\n\nBest,\nDana Whitfield"
+      }
+    },
+    "evidence": {
+      "2026-10-28#08": "Mina asked to add her manager's manager, Teresa Lund, to the weekly status report."
+    }
+  }
+]
