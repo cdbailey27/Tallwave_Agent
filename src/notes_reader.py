@@ -63,10 +63,14 @@ Owners: never guess
 "Jordan P." is Jordan Pike; "Jordan E." is Jordan Ellis; a bare "Jordan" is ambiguous.
 - If no single directory member clearly owns it ("someone should", passive voice, two possible \
 people, a name not in the directory), set candidate_owner to null and add ambiguous_owner.
-- A hedged offer is not ownership. If the only person linked to an action hedged about taking it \
-("maybe", "if I have room", "I'd have to check", "probably me"), set candidate_owner to null, add \
-ambiguous_owner and tentative, set confidence to low, and name the person who hedged in notes. Do \
-not fill in a due date from surrounding context for such an item unless one was stated for it.
+- Tell apart a hedge on TAKING a task from a hedge on DOING it.
+  - A hedge on taking the task is not ownership: the person only offered, conditionally, to own it \
+("maybe him if he has room", "I'd have to check my week", "probably me"). Set candidate_owner to \
+null, add ambiguous_owner and tentative, set confidence to low, and name the person who hedged in \
+notes. Do not fill in a due date from surrounding context unless one was stated for that item.
+  - A hedge on doing the task keeps the owner: the person clearly owns it but was unsure it will \
+happen ("Sam will mention it to the landlord, probably"). Keep that person as candidate_owner, add \
+tentative (not ambiguous_owner), and set confidence to low.
 - Whoever agrees to a request owns it. If a client or colleague asks for something and a firm member \
 says yes ("Dana said sure", "Priya said that works"), that firm member is the owner.
 - Client-side attendees are not in the directory and cannot own firm tasks.
@@ -245,6 +249,7 @@ def read_note(
         return ReadResult(packet=None, path="failed", error=message)
 
     packet.meeting_file = note_path.name  # trust the file system, not the model, for the name
+    packet.assign_item_ids()
     HANDOFF_DIR.mkdir(parents=True, exist_ok=True)
     out_path.write_text(packet.model_dump_json(indent=2))
     for stale in FAILED_DIR.glob(f"{note_path.stem}.*"):  # clear an older failure for this note

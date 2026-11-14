@@ -44,6 +44,7 @@ def _squash(text: str) -> str:
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    id: str = Field(default="", description="Set by the system after validation. Leave empty.")
     kind: Kind
     summary: str = Field(min_length=3, max_length=79, description="Verb-first, under 80 characters")
     candidate_owner: Optional[str] = Field(description="Full name from team.csv, or null if unclear")
@@ -100,3 +101,9 @@ class HandoffPacket(BaseModel):
         if projects is not None and v not in projects:
             raise ValueError(f"project {v!r} is not in projects.csv ({sorted(projects)})")
         return v
+
+    def assign_item_ids(self) -> "HandoffPacket":
+        """Give every item a stable id like 2026-10-13#04 (meeting date + position in the packet)."""
+        for n, item in enumerate(self.items, start=1):
+            item.id = f"{self.meeting_date.isoformat()}#{n:02d}"
+        return self

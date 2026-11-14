@@ -1,0 +1,137 @@
+{
+  "meeting_file": "2026-10-28_cascadia-weekly.md",
+  "meeting_date": "2026-10-28",
+  "project": "Cascadia",
+  "attendees": [
+    "Dana Whitfield",
+    "Priya Raman",
+    "Jordan Pike",
+    "Sam Okafor",
+    "Hollis Greer (Cascadia)",
+    "Mina Park (Cascadia)"
+  ],
+  "items": [
+    {
+      "id": "2026-10-28#01",
+      "kind": "info",
+      "summary": "Report that the checkout vendor has slipped its delivery",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Jordan P. reported that the checkout vendor has slipped its delivery.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Status reported by Jordan Pike. It is the reason for the launch move and is not a task in itself."
+    },
+    {
+      "id": "2026-10-28#02",
+      "kind": "decision",
+      "summary": "Move launch from 2026-11-18 to 2026-12-02",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "the group agreed to move the launch from November 18 to December 2.",
+      "confidence": "high",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "The group agreed this with client attendees present, so it is a date statement to the client. The new launch date is 2026-12-02. due is left null because this is a decision, not a task."
+    },
+    {
+      "id": "2026-10-28#03",
+      "kind": "info",
+      "summary": "Record that Hollis approved the product page comps",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Hollis approved the product page comps.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Approval from the client side (Hollis Greer, Cascadia). It is a status, not a firm task."
+    },
+    {
+      "id": "2026-10-28#04",
+      "kind": "action",
+      "summary": "Export final product page specs for development",
+      "candidate_owner": "Priya Raman",
+      "due": "2026-11-04",
+      "evidence": "Priya will export final specs for development by November 4.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Owner, task and date are all stated plainly."
+    },
+    {
+      "id": "2026-10-28#05",
+      "kind": "action",
+      "summary": "Resend the revised SOW to Hollis",
+      "candidate_owner": "Dana Whitfield",
+      "due": "2026-10-28",
+      "evidence": "Dana checked and said she'd resend it today.",
+      "confidence": "high",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "'Today' resolves to the meeting date, 2026-10-28. The SOW goes to the client."
+    },
+    {
+      "id": "2026-10-28#06",
+      "kind": "action",
+      "summary": "Build the redirects map",
+      "candidate_owner": "Jordan Pike",
+      "due": "2026-11-06",
+      "evidence": "Jordan P. said he'd take the redirects map. He expects it done by November 6.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "'Jordan P.' resolves to Jordan Pike. 'Expects it done by' is read as a stated target date, not a hedge."
+    },
+    {
+      "id": "2026-10-28#07",
+      "kind": "action",
+      "summary": "Share the vendor's new timeline in writing with Hollis",
+      "candidate_owner": "Jordan Pike",
+      "due": "2026-10-29",
+      "evidence": "Jordan P. will share it with him by end of day tomorrow.",
+      "confidence": "high",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "'Tomorrow' resolves to 2026-10-29. The written timeline goes to the client (Hollis Greer)."
+    },
+    {
+      "id": "2026-10-28#08",
+      "kind": "action",
+      "summary": "Add Teresa Lund to the weekly status report recipients",
+      "candidate_owner": "Dana Whitfield",
+      "due": null,
+      "evidence": "Mina asked to add her manager's manager, Teresa Lund, to the weekly status report. Dana said sure.",
+      "confidence": "medium",
+      "flags": [
+        "client_send",
+        "no_date"
+      ],
+      "notes": "Dana agreed to the client's request, so she owns it. This changes who receives client status reports. No date was given."
+    },
+    {
+      "id": "2026-10-28#09",
+      "kind": "action",
+      "summary": "Update dates on launch readiness checklist and launch comms plan",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Sam said the launch readiness checklist and launch comms plan will need new dates once the launch moves.",
+      "confidence": "medium",
+      "flags": [
+        "ambiguous_owner",
+        "no_date"
+      ],
+      "notes": "Sam raised the need but did not take the task. The wording is passive, so no owner is clear. No date was given."
+    },
+    {
+      "id": "2026-10-28#10",
+      "kind": "noise",
+      "summary": "Chat about Mina's dog chewing her laptop charger",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Mina said her dog ate part of her laptop charger",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Small talk."
+    }
+  ]
+}
