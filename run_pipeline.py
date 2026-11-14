@@ -145,7 +145,29 @@ def note_file(folder: str, run: str, name: str, text: str) -> Path:
     return path
 
 
-def execute(outcomes: List[Outcome], decisions: Dict[str, Decision], run_dir: Path, run: str) -> Counter:
+def follow_up_note(o: Outcome, decision: Decision, ctx: Context, run: str) -> Optional[Path]:
+    """A rejected change tied to something the client already heard: tell the engagement lead."""
+    flags = {f for item in o.items for f in item.flags}
+    if not flags & {"client_send", "cost_commitment"}:
+        return None
+    c = o.change
+    project = c.project or o.before.get("project") or o.packet_project
+    lead = ctx.lead(project)
+    said = "\n".join(f'> {i.id}: "{i.evidence}"' for i in o.items)
+    if "cost_commitment" in flags:
+        opening = (f"The commitment you made to the client wasn't approved by {decision.rejected_by}, so it needs a "
+                   "follow-up with the client. Nothing was written to the board and no message went out.")
+    else:
+        opening = (f"{decision.rejected_by} rejected a change tied to something the client already heard, so the client "
+                   "may still be expecting it. Nothing was written to the board and no message went out. Please follow up.")
+    body = (f"# For {lead} (engagement lead, {project})\n\n{opening}\n\n"
+            f"What was said to the client:\n{said}\n\nRejected change ({c.change_id}):\n"
+            + "\n".join(f"    {line}" for line in describe(o, ctx)) + "\n"
+            + (f"\nDraft that was NOT sent: \"{c.outbound.subject}\" to {', '.join(c.outbound.to)}\n" if c.outbound else ""))
+    return note_file(lead.split()[0].lower(), run, c.change_id, body)
+
+
+def execute(outcomes: List[Outcome], decisions: Dict[str, Decision], run_dir: Path, run: str, ctx: Context) -> Counter:
     """Write everything that passed policy and approval, in plan order."""
     print("\n=== Step 5: write ===")
     counts: Counter = Counter()
@@ -172,7 +194,11 @@ def execute(outcomes: List[Outcome], decisions: Dict[str, Decision], run_dir: Pa
         if o.held and not (decision and decision.approved):
             rejected.append({"change_id": c.change_id, "rejected_by": decision.rejected_by if decision else None,
                              "change": c.model_dump(mode="json"), "evidence": {i.id: i.evidence for i in o.items}})
-            print(f"  {c.change_id} rejected by {decision.rejected_by if decision else '?'}, not written")
+            print(f"  {c.change_id} rejected by {decision.rejected_by if decision else '?'}, not written, no draft sent")
+            note = follow_up_note(o, decision, ctx, run) if decision else None
+            if note:
+                print(f"  {c.change_id} follow-up for the engagement lead -> {note.relative_to(ROOT)}")
+                counts["follow-ups to engagement lead"] += 1
             continue
         source = {"change_id": c.change_id, "source_item_ids": c.source_item_ids,
                   "approved_by": decision.by if decision else []}
@@ -285,7 +311,7 @@ def main() -> None:
         mode = "approve" if args.auto_approve else "reject" if args.auto_reject else None
         print("\n=== Step 4: approval gate ===", end="")
         decisions = review(outcomes, ctx, mode)
-        counts = execute(outcomes, decisions, run_dir, args.run_name)
+        counts = execute(outcomes, decisions, run_dir, args.run_name, ctx)
         print_board_diff(run_dir)
 
     approved = sum(1 for d in decisions.values() if d.approved)
@@ -298,6 +324,7 @@ def main() -> None:
         f"  rejected:               {len(held) - approved}",
         f"flagged to Sam:           {counts['flagged to Sam']}  (+ {sum(len(o.review_notes) for o in outcomes)} on his review list)",
         f"routed privately to Lena: {counts['routed privately to Lena']}",
+        f"follow-ups to eng. lead:  {counts['follow-ups to engagement lead']}  (rejected, but the client already heard it)",
         f"policy overrides:         {overrides}",
         f"client drafts saved:      {counts['drafts saved']}  (outbox/sent/, no real email)",
     ]
