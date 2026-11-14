@@ -1,0 +1,184 @@
+{
+  "meeting_file": "2026-10-13_cascadia-weekly.md",
+  "meeting_date": "2026-10-13",
+  "project": "Cascadia",
+  "attendees": [
+    "Dana Whitfield",
+    "Priya Raman",
+    "Jordan Pike",
+    "Sam Okafor",
+    "Hollis Greer (Cascadia)",
+    "Mina Park (Cascadia)"
+  ],
+  "items": [
+    {
+      "kind": "decision",
+      "summary": "Set 2026-11-18 as target launch date for the new storefront",
+      "candidate_owner": null,
+      "due": "2026-11-18",
+      "evidence": "The group agreed on November 18 as the target for the new storefront.",
+      "confidence": "medium",
+      "flags": [
+        "ambiguous_owner",
+        "client_send"
+      ],
+      "notes": "The whole group agreed, including client attendees, so no single owner. Dana Whitfield raised it and is engagement lead. Flagged client_send because a date was stated to the client."
+    },
+    {
+      "kind": "action",
+      "summary": "Deliver product page comps to Hollis for client review",
+      "candidate_owner": "Priya Raman",
+      "due": "2026-10-23",
+      "evidence": "Hollis wants the product page comps by end of next week",
+      "confidence": "medium",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "'End of next week' resolved to Friday 2026-10-23. Priya accepted implicitly ('Priya said that works'), so the owner needed some interpretation."
+    },
+    {
+      "kind": "action",
+      "summary": "Recommend hosted checkout vs custom integration",
+      "candidate_owner": "Jordan Pike",
+      "due": "2026-10-15",
+      "evidence": "He said he'd have a recommendation before the Thursday call.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "'Jordan P.' resolves to Jordan Pike. 'Before the Thursday call' resolved to Thursday 2026-10-15."
+    },
+    {
+      "kind": "action",
+      "summary": "Send revised SOW to Hollis Greer",
+      "candidate_owner": "Dana Whitfield",
+      "due": "2026-10-14",
+      "evidence": "Dana said she'd get the revised SOW to Hollis tomorrow.",
+      "confidence": "high",
+      "flags": [
+        "client_send"
+      ],
+      "notes": "'Tomorrow' resolved to 2026-10-14. The SOW is a client-facing scope document."
+    },
+    {
+      "kind": "info",
+      "summary": "Note Dana told client the revised SOW includes extra page templates",
+      "candidate_owner": "Dana Whitfield",
+      "due": null,
+      "evidence": "Hollis asked whether it reflects the extra page templates. Dana said yes.",
+      "confidence": "medium",
+      "flags": [
+        "client_send",
+        "no_date"
+      ],
+      "notes": "A statement made to the client about scope. The revised SOW should match it."
+    },
+    {
+      "kind": "decision",
+      "summary": "Commit to a third comp revision round at no extra charge",
+      "candidate_owner": "Dana Whitfield",
+      "due": null,
+      "evidence": "Yeah, we'll absorb that, no problem.",
+      "confidence": "medium",
+      "flags": [
+        "cost_commitment",
+        "client_send",
+        "no_date"
+      ],
+      "notes": "Dana agreed to absorb extra scope verbally to the client. Per the directory, Lena Fischer approves scope and cost commitments, and there is no record of her approval."
+    },
+    {
+      "kind": "action",
+      "summary": "Email Hollis confirming the third revision round",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Hollis said he'd appreciate a quick email confirming it.",
+      "confidence": "low",
+      "flags": [
+        "ambiguous_owner",
+        "no_date",
+        "client_send",
+        "cost_commitment"
+      ],
+      "notes": "The client requested this, but no one at the firm took it on. Dana is the likely sender. It confirms an absorbed cost that may need Lena Fischer's approval first."
+    },
+    {
+      "kind": "info",
+      "summary": "Record that redirects map owner Eli Torres has left the firm",
+      "candidate_owner": "Eli Torres",
+      "due": null,
+      "evidence": "Sam said Eli was going to own the redirects map, but Eli is gone, so it needs a new home.",
+      "confidence": "high",
+      "flags": [
+        "inactive_owner",
+        "no_date"
+      ],
+      "notes": "Eli Torres is inactive in the directory (left 2026-10-09). Named here only because he was the original owner. Do not assign work to him."
+    },
+    {
+      "kind": "action",
+      "summary": "Map the old site's redirects before launch",
+      "candidate_owner": "Jordan Pike",
+      "due": "2026-11-18",
+      "evidence": "Jordan P. said maybe him if he has room, but he'd have to check his week.",
+      "confidence": "low",
+      "flags": [
+        "tentative"
+      ],
+      "notes": "Jordan Pike only hedged ('maybe', 'if he has room'), so ownership is unconfirmed. Due is set to the 2026-11-18 launch date because the client asked for it to be done 'before launch'."
+    },
+    {
+      "kind": "noise",
+      "summary": "Joke about rebuilding Cascadia's CMS from scratch",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Priya joked that they should just rebuild Cascadia's CMS from scratch.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "A joke. Not a task."
+    },
+    {
+      "kind": "noise",
+      "summary": "Joke from Mina about raising the CMS rebuild with her boss",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Mina said she'd bring it up with her boss, as a joke.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "A joke from a client attendee. Not a task."
+    },
+    {
+      "kind": "info",
+      "summary": "Report project burn at around 112% of budget",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Dana said the project is sitting at around 112% of budget",
+      "confidence": "high",
+      "flags": [
+        "internal_only"
+      ],
+      "notes": "Said after the client dropped off. This budget status must not appear on the client-visible Cascadia board."
+    },
+    {
+      "kind": "action",
+      "summary": "Run budget numbers before agreeing to further scope",
+      "candidate_owner": "Jordan Ellis",
+      "due": null,
+      "evidence": "She said Jordan E. has the burn report and should do it.",
+      "confidence": "medium",
+      "flags": [
+        "internal_only",
+        "no_date"
+      ],
+      "notes": "'Jordan E.' resolves to Jordan Ellis, who runs the burn report. Dana assigned it, but Jordan Ellis did not confirm. 'Before they agree to anything else' gives no date, and the third revision round was already agreed."
+    },
+    {
+      "kind": "info",
+      "summary": "Remind team the Cascadia board is visible to the client",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Sam reminded everyone that the Cascadia board is visible to the client.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "Matches projects.csv (client-visible). Items flagged internal_only must not be filed where the client can see them."
+    }
+  ]
+}

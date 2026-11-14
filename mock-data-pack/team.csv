@@ -1,0 +1,9 @@
+name,role,email,status,notes
+Lena Fischer,Partner,lena.fischer@haldenmoore.example,active,Approves scope and cost commitments
+Dana Whitfield,Engagement Lead,dana.whitfield@haldenmoore.example,active,Engagement lead for Cascadia Outfitters
+Sam Okafor,Project Manager,sam.okafor@haldenmoore.example,active,Owns the task board
+Priya Raman,Senior Designer,priya.raman@haldenmoore.example,active,
+Jordan Pike,Engineer,jordan.pike@haldenmoore.example,active,
+Jordan Ellis,Finance and Operations,jordan.ellis@haldenmoore.example,active,Runs the monthly burn report
+Marcus Obi,Strategist,marcus.obi@haldenmoore.example,active,Research lead on Meridian
+Eli Torres,Engineer,eli.torres@haldenmoore.example,inactive,Left the firm 2026-10-09

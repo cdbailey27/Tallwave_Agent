@@ -1,0 +1,133 @@
+{
+  "meeting_file": "2026-10-20_internal-ops-sync.md",
+  "meeting_date": "2026-10-20",
+  "project": "Internal",
+  "attendees": [
+    "Lena Fischer",
+    "Dana Whitfield",
+    "Sam Okafor",
+    "Jordan Ellis"
+  ],
+  "items": [
+    {
+      "kind": "decision",
+      "summary": "Set timesheets due Fridays at 5pm starting next week",
+      "candidate_owner": "Lena Fischer",
+      "due": "2026-10-30",
+      "evidence": "Timesheets are due Fridays at 5pm starting next week.",
+      "confidence": "medium",
+      "flags": [],
+      "notes": "Lena confirmed the rule. 'Starting next week' was resolved to the first Friday of the week of 2026-10-26, which is 2026-10-30."
+    },
+    {
+      "kind": "action",
+      "summary": "Update timesheet policy doc after Lena signs off on wording",
+      "candidate_owner": "Sam Okafor",
+      "due": null,
+      "evidence": "Sam said he'd update the timesheet policy doc once Lena signs off on the wording.",
+      "confidence": "medium",
+      "flags": [
+        "no_date"
+      ],
+      "notes": "This depends on Lena Fischer approving the wording first. No date was given."
+    },
+    {
+      "kind": "action",
+      "summary": "Add a \"Needs owner\" status to the board template",
+      "candidate_owner": "Sam Okafor",
+      "due": "2026-10-23",
+      "evidence": "He will make that change by October 23.",
+      "confidence": "high",
+      "flags": [],
+      "notes": "'October 23' was resolved to 2026-10-23."
+    },
+    {
+      "kind": "info",
+      "summary": "Note Cascadia margin numbers are worse than last report suggested",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "the Cascadia margin numbers are worse than the last report suggested",
+      "confidence": "high",
+      "flags": [
+        "internal_only"
+      ],
+      "notes": "This is margin information about a client engagement. Cascadia's board is client-visible, so this must not go on the Cascadia board."
+    },
+    {
+      "kind": "action",
+      "summary": "Send full Cascadia margin breakdown to Lena Fischer",
+      "candidate_owner": "Jordan Ellis",
+      "due": "2026-10-23",
+      "evidence": "He will send the full breakdown to Lena by Friday.",
+      "confidence": "high",
+      "flags": [
+        "internal_only"
+      ],
+      "notes": "'Jordan E.' resolves to Jordan Ellis. 'By Friday' resolves to 2026-10-23. The recipient is internal. Keep this off the client-visible Cascadia board."
+    },
+    {
+      "kind": "decision",
+      "summary": "Reopen the junior designer search",
+      "candidate_owner": "Lena Fischer",
+      "due": null,
+      "evidence": "Lena is reopening the junior designer search.",
+      "confidence": "high",
+      "flags": [
+        "internal_only",
+        "no_date"
+      ],
+      "notes": "This is a staffing matter, so it is internal only. No date was given."
+    },
+    {
+      "kind": "action",
+      "summary": "Draft the junior designer job description",
+      "candidate_owner": "Dana Whitfield",
+      "due": null,
+      "evidence": "Dana will draft the job description.",
+      "confidence": "medium",
+      "flags": [
+        "internal_only",
+        "no_date"
+      ],
+      "notes": "This is a staffing task tied to the reopened junior designer search. No date was given."
+    },
+    {
+      "kind": "action",
+      "summary": "Schedule check-in with Marcus Obi for week of 2026-10-26",
+      "candidate_owner": "Dana Whitfield",
+      "due": null,
+      "evidence": "Lena asked Dana to schedule the performance plan check-in with Marcus for the week of October 26.",
+      "confidence": "medium",
+      "flags": [
+        "sensitive_hr",
+        "no_date"
+      ],
+      "notes": "This is a performance plan check-in, so it is sensitive HR. Handle discreetly. The check-in itself is for the week of 2026-10-26, but no deadline was given for the scheduling, so due is null."
+    },
+    {
+      "kind": "action",
+      "summary": "Mention office Wi-Fi dropouts to the landlord",
+      "candidate_owner": "Sam Okafor",
+      "due": null,
+      "evidence": "Sam will mention it to the landlord, probably.",
+      "confidence": "low",
+      "flags": [
+        "tentative",
+        "no_date"
+      ],
+      "notes": "The commitment is hedged with 'probably'. No date was given."
+    },
+    {
+      "kind": "info",
+      "summary": "Remind team to keep timesheets honest for the burn report",
+      "candidate_owner": null,
+      "due": null,
+      "evidence": "Lena said the team should keep timesheets honest because the burn report depends on them.",
+      "confidence": "high",
+      "flags": [
+        "internal_only"
+      ],
+      "notes": "The note says this is a general reminder with no action. It references the burn report, so it is internal only."
+    }
+  ]
+}
