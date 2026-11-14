@@ -84,6 +84,49 @@ class Outcome:
         self.approval_reasons.append(f"{person}: {why}")
 
 
+# Possible-duplicate check: compare titles on content words only. Words in one group (budget,
+# margin, burn...) count as the same topic, so "run budget numbers" and "send margin breakdown"
+# look like the same work. Names, projects and generic verbs carry no signal and are dropped.
+_STOP = {
+    "a", "an", "the", "to", "for", "of", "and", "or", "on", "in", "with", "before", "after", "by", "from",
+    "at", "into", "any", "all", "our", "their", "his", "her", "new", "full", "further", "agreeing", "needs",
+    "owner", "run", "send", "add", "draft", "update", "set", "up", "build", "create", "make", "share",
+    "confirm", "complete", "prepare", "write", "get", "review", "schedule", "mention", "export", "deliver",
+    "compile", "take", "check", "finalize", "final", "weekly",
+}
+_TOPICS = {
+    "budget": "finance", "margin": "finance", "burn": "finance", "number": "finance", "breakdown": "finance",
+    "cost": "finance", "financial": "finance", "profitability": "finance", "spend": "finance",
+    "spec": "spec", "specification": "spec", "comp": "comp", "mockup": "comp",
+    "sow": "sow", "statement": "sow", "redirect": "redirect", "recipient": "distribution", "distribution": "distribution",
+}
+
+
+def _work_words(title: str, ctx: "Context") -> set:
+    names = {part.lower() for name in ctx.team_status for part in name.split()} | {p.lower() for p in ctx.projects}
+    words = set()
+    for raw in re.findall(r"[a-z0-9]+", title.lower()):
+        word = raw[:-1] if len(raw) > 3 and raw.endswith("s") else raw
+        if word in _STOP or raw in _STOP or word in names or raw in names or len(word) < 3:
+            continue
+        words.add(_TOPICS.get(word, word))
+    return words
+
+
+def possible_duplicates(title: str, owner: str, project: str, board: Dict[str, Dict[str, str]], ctx: "Context") -> List[str]:
+    """Open tasks with the same owner and project whose title looks like the same work."""
+    mine = _work_words(title, ctx)
+    found = []
+    for task_id, row in board.items():
+        if row.get("owner") != owner or row.get("project") != project or row.get("status") == "Done":
+            continue
+        theirs = _work_words(row.get("title") or "", ctx)
+        shared = mine & theirs
+        if mine and theirs and len(shared) / min(len(mine), len(theirs)) >= 0.5:
+            found.append(task_id)
+    return found
+
+
 def _first_word(title: str) -> str:
     rest = title[len(NEEDS_OWNER):] if title.startswith(NEEDS_OWNER) else title
     return (rest.split() or [""])[0].strip("\"'").lower()
@@ -199,6 +242,12 @@ def check(
             out.override("tasks: every task has a priority", "no priority; set P2 (the default)")
         if c.op == "create" and not c.status:
             c.status = "To do"
+
+        # 3e. Possible duplicate: keep both, but ask Sam to confirm.
+        if c.op == "create":
+            for task_id in possible_duplicates(c.title, c.owner, c.project, board, ctx):
+                out.review_notes.append(
+                    f"possible duplicate of {task_id} ({board[task_id].get('title')!r}), confirm: {c.title!r}")
 
     # 4. Approvals: anything that leaves the firm, or commits the firm to cost or scope.
     project = (c.project or board.get(c.matches_task or "", {}).get("project") or packet_project)

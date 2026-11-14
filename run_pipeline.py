@@ -17,6 +17,7 @@ import argparse
 import csv
 import json
 import logging
+import re
 import shutil
 import sys
 from collections import Counter
@@ -203,7 +204,10 @@ def execute(outcomes: List[Outcome], decisions: Dict[str, Decision], run_dir: Pa
             print(f"  {c.change_id} draft saved (no real email) -> {path.relative_to(ROOT)}")
             counts["drafts saved"] += 1
     (run_dir / "rejected.json").write_text(json.dumps(rejected, indent=2))
-    review_notes = [f"- {o.change.change_id}: {note}" for o in outcomes for note in o.review_notes]
+    def real(text: str) -> str:  # NEW-# ids were placeholders while planning; show the real task id
+        return re.sub(r"NEW-\d+", lambda m: real_ids.get(m.group(0), f"{m.group(0)} (not created)"), text)
+
+    review_notes = [f"- {o.change.change_id}: {real(note)}" for o in outcomes for note in o.review_notes]
     if review_notes:
         text = "# Sam Okafor: review list\n\n" + "\n".join(review_notes) + "\n"
         note_file("sam-flags", run, "review-list", text)
