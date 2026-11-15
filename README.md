@@ -12,7 +12,31 @@ notes/*.md ─► agent one ─► handoff/*.json ─┬─► agent two ─► 
                          (guard.py)                                                           └─► outbox/lena-private/ (HR, never on a board)
 ```
 
-## Run the whole pipeline
+## Setup
+
+Requires Python 3.9+ and an Anthropic API key.
+
+```bash
+git clone <this repo's URL> && cd Tallwave_Agent
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env        # then set ANTHROPIC_API_KEY in .env (never committed; .env is gitignored)
+```
+
+## Run
+
+```bash
+python run_reader.py                                     # agent one: notes -> handoff/*.json
+python run_pipeline.py --skip-reader --reset-board       # agent two -> policy -> approve each held change -> board
+python scripts/report.py runs/<run>                      # HTML report of a run, at runs/<run>/report.html
+```
+
+`run_pipeline.py` runs agent one first unless you pass `--skip-reader`. Every run needs a fresh
+`--run-name` (or takes a timestamp by default) and refuses to overwrite an existing `runs/` folder.
+`DEMO.md` is the 5-minute walkthrough script.
+
+## All pipeline options
 
 ```bash
 python run_pipeline.py --dry-run --reset-board          # plan only: nothing written
@@ -53,16 +77,9 @@ The live board is `board/board.csv`. It's seeded from the data pack, which is ne
 | `handoff/` | Agent one's output (one JSON per note) |
 | `mock-data-pack/` | The case-study data, unchanged |
 
-## Run it
-
-Requires Python 3.9+.
+## Agent one on its own
 
 ```bash
-cd ~/Desktop/Tallwave_Agent
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env        # then put your ANTHROPIC_API_KEY in .env
 python run_reader.py
 ```
 
@@ -79,6 +96,13 @@ Saved runs in `runs/`:
 - `01-before-fix` is the first run. It's the "confidently wrong" example: the redirects map was assigned to Jordan Pike on a "maybe".
 - `02-after-fix` is the run after the prompt fixes.
 - `03-break-twice` holds the failure record from `--break-twice`.
+- `04-reader-final` is agent one's final output, matching `tests/expected_items.md`.
+- `05-dry-run` and `06-pipeline` are the first full pipeline runs (plan only, then auto-approve).
+- `07-auto-reject` rejects every held change; follow-up notes go to the engagement leads.
+- `08b-interactive-reject` is approved by hand, with Lena rejecting the third revision round. It has `report.html`.
+- `09-break-filer` and `10-break-filer-twice` exercise agent two's retry and failure paths.
+- `11-dry-run-a/b/c` are three dry runs used to check consistency (`tests/compare_plans.py`).
+- `demo-final` is the run recorded for the demo.
 
 Optional settings in `.env`: `READER_MODEL` (default `claude-opus-5-5`) and `DATA_DIR` (default `mock-data-pack`).
 

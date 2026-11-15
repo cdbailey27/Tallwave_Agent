@@ -1,0 +1,37 @@
+[
+  {
+    "change_id": "C04",
+    "rejected_by": "Lena Fischer",
+    "change": {
+      "change_id": "C04",
+      "source_item_ids": [
+        "2026-10-13#07",
+        "2026-10-13#06"
+      ],
+      "op": "create",
+      "matches_task": null,
+      "title": "[Needs owner] Email Hollis confirming third comp revision round",
+      "project": "Cascadia",
+      "owner": "Sam Okafor",
+      "due": "2026-11-05",
+      "priority": "P2",
+      "status": "To do",
+      "reason": "No confirmation email is on the board yet and no firm member agreed to send it, so this goes to Sam Okafor as needing an owner; it puts a no-cost scope commitment in writing, so Lena Fischer must approve it as well as the engagement lead.",
+      "needs_approval_from": [
+        "Dana Whitfield",
+        "Lena Fischer"
+      ],
+      "outbound": {
+        "to": [
+          "Hollis Greer (Cascadia)"
+        ],
+        "subject": "Third round of product page comp revisions",
+        "body": "Hi Hollis,\n\nFollowing up on our October 13 call: as discussed, we will include a third round of revisions on the product page comps at no additional cost to Cascadia.\n\nLet us know if you have any questions.\n\nBest regards,\nHalden & Moore"
+      }
+    },
+    "evidence": {
+      "2026-10-13#07": "Hollis said he'd appreciate a quick email confirming it.",
+      "2026-10-13#06": "Dana said, \"Yeah, we'll absorb that, no problem.\""
+    }
+  }
+]

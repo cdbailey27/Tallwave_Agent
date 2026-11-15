@@ -22,12 +22,12 @@
       "flags": [
         "client_send"
       ],
-      "notes": "Agreed with client attendees present, so it is a date statement to the client. Year 2026 taken from the meeting date."
+      "notes": "November 18 resolved to 2026-11-18 based on the meeting year. The date was agreed with the client present, so it counts as a date statement to the client."
     },
     {
       "id": "2026-10-13#02",
       "kind": "action",
-      "summary": "Deliver product page comps to Hollis for client review",
+      "summary": "Deliver product page comps to Hollis for review",
       "candidate_owner": "Priya Raman",
       "due": "2026-10-23",
       "evidence": "Hollis wants the product page comps by end of next week",
@@ -35,7 +35,7 @@
       "flags": [
         "client_send"
       ],
-      "notes": "Priya owns it because she agreed to Hollis's request ('Priya said that works'). 'End of next week' resolved to Friday of the following calendar week, 2026-10-23."
+      "notes": "Priya agreed ('Priya said that works'), so she owns it. 'End of next week' resolved to Friday of the following calendar week, 2026-10-23."
     },
     {
       "id": "2026-10-13#03",
@@ -46,7 +46,7 @@
       "evidence": "He said he'd have a recommendation before the Thursday call.",
       "confidence": "medium",
       "flags": [],
-      "notes": "'Jordan P.' resolves to Jordan Pike. The Thursday call is 2026-10-15, so 'before' it means the Wednesday, 2026-10-14."
+      "notes": "'Jordan P.' resolves to Jordan Pike. 'Before the Thursday call' means the day before Thursday 2026-10-15, so the due date is Wednesday 2026-10-14."
     },
     {
       "id": "2026-10-13#04",
@@ -59,79 +59,68 @@
       "flags": [
         "client_send"
       ],
-      "notes": "'Tomorrow' is the day after the meeting, 2026-10-14."
+      "notes": "'Tomorrow' resolved to the day after the meeting, 2026-10-14."
     },
     {
       "id": "2026-10-13#05",
       "kind": "info",
-      "summary": "Confirm to client that revised SOW includes extra page templates",
+      "summary": "Confirm to client that revised SOW covers extra page templates",
       "candidate_owner": "Dana Whitfield",
       "due": null,
       "evidence": "Hollis asked whether it reflects the extra page templates. Dana said yes.",
-      "confidence": "high",
+      "confidence": "medium",
       "flags": [
         "client_send"
       ],
-      "notes": "Dana made a scope statement to the client. The note does not say whether the extra templates are billed, so no cost flag was added."
+      "notes": "This is a scope statement made to the client. The board agent may want to check the SOW content before it is sent."
     },
     {
       "id": "2026-10-13#06",
       "kind": "decision",
-      "summary": "Grant Cascadia a third round of comp revisions at no extra cost",
+      "summary": "Absorb a third round of comp revisions at no cost to Cascadia",
       "candidate_owner": "Dana Whitfield",
       "due": null,
       "evidence": "Dana said, \"Yeah, we'll absorb that, no problem.\"",
       "confidence": "high",
       "flags": [
-        "client_send",
-        "cost_commitment"
+        "cost_commitment",
+        "client_send"
       ],
-      "notes": "Dana committed the firm to absorbing extra scope in front of the client. The directory says Lena Fischer approves scope and cost commitments; the note does not show her approval."
+      "notes": "Dana committed the firm to extra scope verbally, in front of the client. The directory says Lena Fischer approves cost commitments, and the note does not mention her approval."
     },
     {
       "id": "2026-10-13#07",
       "kind": "action",
-      "summary": "Email Hollis confirming the absorbed third revision round",
+      "summary": "Email Hollis confirming the third revision round",
       "candidate_owner": null,
       "due": null,
       "evidence": "Hollis said he'd appreciate a quick email confirming it.",
-      "confidence": "medium",
+      "confidence": "low",
       "flags": [
         "ambiguous_owner",
         "no_date",
         "client_send",
         "cost_commitment"
       ],
-      "notes": "Hollis requested the email, but no firm member was recorded agreeing to send it. Dana made the commitment, but she is not stated as the sender. The email would put a cost commitment in writing to the client."
+      "notes": "The client requested this, but no firm member agreed to send it. Dana is the likely sender, but that is not stated. The email would put a cost commitment in writing."
     },
     {
       "id": "2026-10-13#08",
-      "kind": "info",
-      "summary": "Note the redirects map lost its owner when Eli left",
-      "candidate_owner": null,
-      "due": null,
-      "evidence": "Sam said Eli was going to own the redirects map, but Eli is gone, so it needs a new home.",
-      "confidence": "high",
-      "flags": [],
-      "notes": "Eli Torres is inactive (left 2026-10-09). He is not set as owner because the note says the work needs a new owner."
-    },
-    {
-      "id": "2026-10-13#09",
       "kind": "action",
-      "summary": "Map old site redirects for the new storefront",
+      "summary": "Find a new owner for the old-site redirects map",
       "candidate_owner": null,
       "due": null,
       "evidence": "Jordan P. said maybe him if he has room, but he'd have to check his week.",
       "confidence": "low",
       "flags": [
         "ambiguous_owner",
-        "no_date",
-        "tentative"
+        "tentative",
+        "no_date"
       ],
-      "notes": "Jordan Pike hedged on taking the task, so the owner is null. Mina asked about mapping before launch (target 2026-11-18), but no one committed to a date, so due is left null."
+      "notes": "Jordan Pike only offered conditionally to take this, so he is not the owner. It was previously Eli Torres's task, and Eli is now inactive. Mina asked about having it done before launch, but no due date was committed."
     },
     {
-      "id": "2026-10-13#10",
+      "id": "2026-10-13#09",
       "kind": "noise",
       "summary": "Joke about rebuilding Cascadia's CMS from scratch",
       "candidate_owner": null,
@@ -139,36 +128,36 @@
       "evidence": "Priya joked that they should just rebuild Cascadia's CMS from scratch.",
       "confidence": "high",
       "flags": [],
-      "notes": "A joke. It is not a scope proposal."
+      "notes": ""
     },
     {
-      "id": "2026-10-13#11",
+      "id": "2026-10-13#10",
       "kind": "noise",
-      "summary": "Joke from Mina about raising the CMS rebuild with her boss",
+      "summary": "Joke about raising the CMS rebuild with Mina's boss",
       "candidate_owner": null,
       "due": null,
       "evidence": "Mina said she'd bring it up with her boss, as a joke.",
       "confidence": "high",
       "flags": [],
-      "notes": "A client-side joke. It is not a commitment."
+      "notes": "Mina is client-side, and this was explicitly a joke."
     },
     {
-      "id": "2026-10-13#12",
+      "id": "2026-10-13#11",
       "kind": "info",
-      "summary": "Report project burn at around 112% of budget",
+      "summary": "Note project is at about 112% of budget",
       "candidate_owner": null,
       "due": null,
-      "evidence": "Dana said the project is sitting at around 112% of budget",
+      "evidence": "the project is sitting at around 112% of budget",
       "confidence": "high",
       "flags": [
         "internal_only"
       ],
-      "notes": "Said after the client dropped off. This is budget information on a client-visible project and must not reach the client board."
+      "notes": "Budget status was discussed after the client left. The Cascadia board is client-visible, so this must not appear there."
     },
     {
-      "id": "2026-10-13#13",
+      "id": "2026-10-13#12",
       "kind": "action",
-      "summary": "Run budget numbers before agreeing to further scope",
+      "summary": "Run the budget numbers before agreeing to further scope",
       "candidate_owner": "Jordan Ellis",
       "due": null,
       "evidence": "She said Jordan E. has the burn report and should do it.",
@@ -177,18 +166,18 @@
         "no_date",
         "internal_only"
       ],
-      "notes": "'Jordan E.' resolves to Jordan Ellis, who runs the burn report. He was assigned by Dana but was not an attendee and did not accept. No date was given ('before they agree to anything else'). The third revision round was already absorbed earlier in this meeting."
+      "notes": "'Jordan E.' resolves to Jordan Ellis. Dana assigned the task, but Jordan Ellis was not in attendance and did not accept it. The condition 'before they agree to anything else' is not a date."
     },
     {
-      "id": "2026-10-13#14",
+      "id": "2026-10-13#13",
       "kind": "info",
-      "summary": "Remind team the Cascadia board is visible to the client",
+      "summary": "Remind team that the Cascadia board is visible to the client",
       "candidate_owner": null,
       "due": null,
       "evidence": "Sam reminded everyone that the Cascadia board is visible to the client.",
       "confidence": "high",
       "flags": [],
-      "notes": "Items flagged internal_only from this meeting should not be filed on the client-visible board as written."
+      "notes": "This is relevant to how items flagged internal_only should be handled."
     }
   ]
 }

@@ -12,18 +12,18 @@
     {
       "id": "2026-10-20#01",
       "kind": "decision",
-      "summary": "Require timesheets by Fridays 5pm starting week of 2026-10-26",
+      "summary": "Set timesheet deadline to Fridays at 5pm starting next week",
       "candidate_owner": "Lena Fischer",
       "due": null,
       "evidence": "Timesheets are due Fridays at 5pm starting next week.",
       "confidence": "high",
       "flags": [],
-      "notes": "Lena confirmed the rule. 'Next week' after Tuesday 2026-10-20 is the week of 2026-10-26, so the first deadline is Friday 2026-10-30. Due is left null because this is a policy decision, not a task."
+      "notes": "Lena confirmed the rule. 'Next week' is the week of 2026-10-26, so the first deadline under the new rule is Friday 2026-10-30. Due is left null because this is a standing rule, not a task."
     },
     {
       "id": "2026-10-20#02",
       "kind": "action",
-      "summary": "Update timesheet policy doc after Lena signs off on wording",
+      "summary": "Update the timesheet policy doc after Lena signs off on wording",
       "candidate_owner": "Sam Okafor",
       "due": null,
       "evidence": "Sam said he'd update the timesheet policy doc once Lena signs off on the wording.",
@@ -31,7 +31,7 @@
       "flags": [
         "no_date"
       ],
-      "notes": "Sam clearly owns this. It depends on Lena's sign-off, and no date was given."
+      "notes": "Depends on Lena Fischer signing off on the wording first, and no date was given for that sign-off. The condition is a dependency, not a hedge, so this is not marked tentative."
     },
     {
       "id": "2026-10-20#03",
@@ -42,18 +42,18 @@
       "evidence": "He will make that change by October 23.",
       "confidence": "high",
       "flags": [],
-      "notes": "'By October 23' resolves to 2026-10-23."
+      "notes": "The note says 'by October 23', so due is 2026-10-23. The purpose is to stop unowned items hiding in To do."
     },
     {
       "id": "2026-10-20#04",
       "kind": "info",
-      "summary": "Report Cascadia margin numbers are worse than last report suggested",
-      "candidate_owner": "Jordan Ellis",
+      "summary": "Note Cascadia margin numbers are worse than the last report suggested",
+      "candidate_owner": null,
       "due": null,
       "evidence": "Jordan E. said the Cascadia margin numbers are worse than the last report suggested.",
       "confidence": "high",
       "flags": [],
-      "notes": "'Jordan E.' resolves to Jordan Ellis. No internal_only flag because this note's project is Internal (internal board), even though the margin data is about Cascadia."
+      "notes": "These are Cascadia margin figures discussed on the Internal board. internal_only is not added because this board is internal. Do not carry this onto the client-visible Cascadia board."
     },
     {
       "id": "2026-10-20#05",
@@ -64,7 +64,7 @@
       "evidence": "He will send the full breakdown to Lena by Friday.",
       "confidence": "high",
       "flags": [],
-      "notes": "'He' refers to Jordan E. (Jordan Ellis). 'By Friday' is the next Friday after Tuesday 2026-10-20, which is 2026-10-23. It goes to Lena internally, not to the client."
+      "notes": "'Jordan E.' resolves to Jordan Ellis. 'By Friday' is the next Friday after Tuesday 2026-10-20, which is 2026-10-23. This is margin data, so keep it off the client-visible Cascadia board."
     },
     {
       "id": "2026-10-20#06",
@@ -75,12 +75,12 @@
       "evidence": "Lena is reopening the junior designer search.",
       "confidence": "high",
       "flags": [],
-      "notes": "Lena made the decision. This is staffing talk, but internal_only does not apply on the Internal project."
+      "notes": "Lena Fischer made the staffing decision."
     },
     {
       "id": "2026-10-20#07",
       "kind": "action",
-      "summary": "Draft the junior designer job description",
+      "summary": "Draft the job description for the junior designer role",
       "candidate_owner": "Dana Whitfield",
       "due": null,
       "evidence": "Dana will draft the job description.",
@@ -88,21 +88,21 @@
       "flags": [
         "no_date"
       ],
-      "notes": "Dana clearly owns this. No date was given."
+      "notes": "Owner is stated plainly. No date was given."
     },
     {
       "id": "2026-10-20#08",
       "kind": "action",
-      "summary": "Schedule performance plan check-in with Marcus Obi",
+      "summary": "Schedule Marcus's performance plan check-in for week of Oct 26",
       "candidate_owner": "Dana Whitfield",
       "due": null,
-      "evidence": "Lena asked Dana to schedule the performance plan check-in with Marcus for the week of October 26.",
+      "evidence": "Dana said she'd put it on the calendar.",
       "confidence": "medium",
       "flags": [
         "no_date",
         "sensitive_hr"
       ],
-      "notes": "Dana agreed ('she'd put it on the calendar'), so she owns it. The check-in itself is for the week of 2026-10-26, but no deadline was stated for the scheduling task, so due is null. This is a performance matter about Marcus Obi."
+      "notes": "Dana Whitfield agreed to Lena's request, so she owns it. The check-in itself is targeted for the week of 2026-10-26, but no deadline was stated for scheduling it, so due is null. This concerns a performance plan, so it is marked sensitive_hr."
     },
     {
       "id": "2026-10-20#09",
@@ -113,7 +113,7 @@
       "evidence": "The office Wi-Fi has been dropping again.",
       "confidence": "high",
       "flags": [],
-      "notes": "Status remark. The follow-up is captured as a separate action."
+      "notes": "This is status context for the follow-up action below."
     },
     {
       "id": "2026-10-20#10",
@@ -127,7 +127,7 @@
         "tentative",
         "no_date"
       ],
-      "notes": "Sam owns this, but 'probably' hedges whether he will do it, so he stays the owner and it is marked tentative. No date was given."
+      "notes": "Sam clearly owns this, but 'probably' hedges whether it will happen, so he stays as owner and the item is marked tentative. No date was given."
     },
     {
       "id": "2026-10-20#11",
@@ -138,7 +138,7 @@
       "evidence": "Lena said the team should keep timesheets honest because the burn report depends on them.",
       "confidence": "high",
       "flags": [],
-      "notes": "The note calls this a general reminder with no action."
+      "notes": "The note explicitly says 'General reminder, no action.'"
     }
   ]
 }
